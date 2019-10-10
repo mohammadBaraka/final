@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import AllProuducts from './Components/AllProuducts//AllProuducts';
+import LaptopProducts from './Components/Laptop products/Laptopproducts';
+import PhoenProducts from './Components/Phone Products/PhoneProducts';
+import ScreenProducts from './Components/Screen Products/ScreenProducts';
+import AddProduct from './Components/Add Produts/AddProdut';
+import {BrowserRouter , Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  render() { 
+    return (  
+   <BrowserRouter>
+      <div className="App">
+        <Route  path="/newProduct" component= {AllProuducts} />
+        <Route exact path="/phone" component={PhoenProducts} />
+        <Route  path="/laptops" component= {LaptopProducts} />
+        <Route path= "/screen" component= {ScreenProducts} />
+        <Route path="/add" component={AddProduct} />
+        
+     </div>
+   </BrowserRouter>
+
+    );
+  }
 }
-
+ 
 export default App;

@@ -1,0 +1,50 @@
+
+.PhoenProducts {
+    width: 70%;
+    margin: 90px auto;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:repeat(3, 500px);
+    grid-gap: 100px 80px;
+    cursor: pointer;
+}
+
+.container-phones {
+    position: relative;
+    border-radius: 20px;
+    transition: all ease 1s;
+    box-shadow: 1px 1px 10px;
+    background-color: #fff
+}
+
+.container-phones:hover {
+    transform:scale(1.1)
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.overlay-phones {
+     position: absolute;
+     bottom: 0;
+     background: #2d3436;
+     background:#2d3436;
+     color: #f1f1f1;
+     width: 100%;
+     height: 150px;
+     transition: all ease 1s;
+     opacity: 0;
+     color: #fff;
+     font-size: 20px;
+     padding: 20px;
+     text-align: center;
+     border-bottom-right-radius: 20px;
+     border-bottom-left-radius: 20px;
+}
+
+
+.container-phones:hover .overlay-phones {
+    opacity: 1;
+}
