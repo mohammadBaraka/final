@@ -1,49 +1,113 @@
+    .ScreenProducts {
+        width: 80%;
+        margin: 0 auto 10% auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
 
-.ScreenProducts {
-    width: 70%;
-    margin: 90px auto;
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-template-rows:repeat(3, 500px);
-    grid-gap: 100px 80px;
-    cursor: pointer;
-}
+    .card-screen {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 75%;
+        margin: 20% auto 10% auto;
+        text-align: center;
+        font-family: arial;
+        position: relative;
+        transition: transform 0.7s;
+        border-radius: 15px !important;
+        font-weight: bold;
+        font-size: 20px
+    }
 
-.container-screens {
-     position: relative;
-     border-radius: 20px;
-     transition: all ease 1s;
-     box-shadow: 1px 1px 10px;
-     background-color: #fff
-}
+    .card-screen:hover {
+        transform: scale(1.1);
 
-.container-screens:hover {
-    transform:scale(1.1);
-}
+    }
 
-.image {
-    width: 100%;
-    height: auto;
-}
+    .price-screen {
+        color: grey;
+        font-size: 22px;
+    }
 
-.overlay-scrreens {
-    position: absolute;
-    bottom: 0;
-    background: #2d3436;
-    background:#2d3436;
-    color: #f1f1f1;
-    width: 100%;
-    height: 150px;
-    transition: all ease 1s;
-    opacity: 0;
-    color: #fff;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
+    .card-screen button {
+        border: none;
+        outline: 0;
+        padding: 15px;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 15px;
+        position: absolute;
+        right: 0;
+    }
 
-.container-screens:hover .overlay-scrreens {
-    opacity: 1;
-}
+
+
+    /* ---------------------------------------------Media Query ---------------------------------------*/
+
+    /*--------------------------------------Tablet----------------------------------------------------*/
+
+    @media screen and (max-width:900px) {
+
+        .ScreenProducts {
+            width: 90%;
+            margin: 0 auto 10% auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        .card-screen {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+            margin: 10% auto 20% auto;
+            text-align: center;
+            font-family: arial;
+            position: relative;
+            transition: transform 0.7s;
+            border-radius: 15px !important;
+            font-weight: bold;
+            font-size: 20px
+        }
+
+        .card-screen:hover {
+            transform: scale(1.1);
+
+        }
+
+
+        .price-screen {
+            color: grey;
+            font-size: 22px;
+        }
+
+        .card-screen button {
+            border: none;
+            outline: 0;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            position: absolute;
+            right: 0;
+        }
+
+    }
+
+
+    /*-------------------Mobiles-------*/
+
+    @media screen and (max-width:550px) {
+
+
+        .ScreenProducts {
+            width: 95%;
+            margin: 0 auto 10% auto;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+        }
+    }

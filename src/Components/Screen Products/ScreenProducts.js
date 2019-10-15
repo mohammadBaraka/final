@@ -10,44 +10,72 @@ class ScreenProducts extends Component {
         return (  
             <div className="ScreenProducts1">
             <NavBar />
-            <div className="ScreenProducts" >
+            < div className = "ScreenProducts  col-md-10 col-xs-12 col-sm-12" >
             
-                 <div className="container-screens">
-  <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product1</div>
+  <div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container-screens">
-   <img src={Image} className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product2</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container-screens">
-   <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product3</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-<div className="container-screens">
-   <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product4</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-<div className="container-screens">
-   <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product5</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-<div className="container-screens">
-   <img src={Image}  className="image" alt="mobile"/>
-  <div className="overlay-scrreens">Product6</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container-screens">
-    <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product7</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container-screens">
-   <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product8</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h2>Mobile Samsung</h2>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container-screens">
-  <img src={Image}  className="image" alt="mobile" />
-  <div className="overlay-scrreens">Product9</div>
+<div className="card-screen">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Mobile Samsung</h1>
+  <p className="price-screen">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
+
   </div>
   <Footer />
             </div>

@@ -1,133 +1,83 @@
 import React, { Component } from 'react';
+import './AllProuducts.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import './AllProuducts.css';
 import Image from '../AllProuducts/5.png';
 
-class AllProuducts  extends Component {
-   
+class AllProducts extends Component {
     render() { 
-        return (
-            <div className = "AllProuducts1">
+        return ( 
+            <div className="AllProducts1">
             <NavBar />
-            
-            <div className="AllProuducts">
-            
-      <div className="container1 ltrEffect">
-       <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-       <img src={Image}  className="image" alt="mobile" />
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
-      
+            <div className="AllProducts  col-md-10 col-xs-12 col-sm-12">
+  <div className="card ltreffect">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container1 ltrEffect">
-  <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-   <img src={Image} className="image" alt="mobile" />
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container1 ltrEffect">
-  <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-   <img src={Image}  className="image" alt="mobile" />
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-<div className="container1 ltrEffect">
- <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-   <img src={Image}  className="image" alt="mobile" />
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-<div className="container1 ltrEffect">
- <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-   <img src={Image}  className="image" alt="mobile" />
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-<div className="container1 ltrEffect">
- <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-   <img src={Image}  className="image" alt="mobile"/>
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container1 ltrEffect">
-  <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-    <img src={Image}  className="image" alt="mobile" />
-       <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container1 ltrEffect">
-  
-   <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />
-   <img src={Image}  className="image" alt="mobile" />
-      <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
- <div className="container1 ltrEffect">
-  <span className="one" />
-  <span className="two" />
-  <span className="three" />
-  <span className="four" />   
-  <img src={Image}  className="image" alt="mobile" />
-     <div className="details">
-  <p>Samsung Mobile Grand Prime</p>
-  <h4>Price: 250$</h4>
-  <button className="btn btn-danger">More Info</button>
- </div>
+  <div className="card">
+  <img src={Image} alt="Denim Jeans" style={{width: '100%'}} />
+  <h1>Tailored Jeans</h1>
+  <p className="price">$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button className="btn btn-dark">Add to Cart</button></p>
 </div>
-</div>
-<Footer />
-      </div>
-      );
-  }
+            </div>  
+            <Footer />
+            </div>
+         );
+    }
 }
  
-export default AllProuducts;
+export default AllProducts;

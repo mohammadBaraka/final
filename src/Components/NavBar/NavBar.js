@@ -18,9 +18,9 @@ class NavBar extends Component {
             <div className="NavigationBar">
             <NavLink exact to="/phone" className="btn btn-info active "> 
              Phones
-            <i className="fa fa-mobile"></i>
+            <i className="fa fa-mobile-alt"></i>
             </NavLink>
-            <NavLink to="/newProduct" className="btn btn-dark">
+            <NavLink to="/" className="btn btn-dark">
             New Products
             <i className="fa fa-spinner fa-spin"></i>
             </NavLink>
