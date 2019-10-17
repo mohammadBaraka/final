@@ -1,9 +1,9 @@
     .AllProducts {
         width: 80%;
-        margin:  0 auto 10% auto;
+        margin: 0 auto 10% auto;
         display: grid;
-        grid-template-columns:repeat(3 , 1fr);
-        grid-template-rows:repeat(3 , 1fr);   
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
     }
 
     .card {
@@ -16,13 +16,12 @@
         transition: transform 0.7s;
         border-radius: 15px !important;
         font-weight: bold;
-        font-size:20px
-    
+        font-size: 20px
     }
 
-    .card:hover{
-        transform:scale(1.1);
-        
+    .card:hover {
+        transform: scale(1.1);
+
     }
 
     .price {
@@ -43,56 +42,57 @@
         right: 0;
     }
 
-    
+
 
     /* ---------------------------------------------Media Query ---------------------------------------*/
 
     /*--------------------------------------Tablet----------------------------------------------------*/
-    
+
     @media screen and (max-width:900px) {
-     
-          .AllProducts {
-              width: 90%;
-              margin: 0 auto 10% auto;
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              grid-template-rows: repeat(2, 1fr);
-          }
-          .card {
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-              max-width: 80%;
-              margin: 10% auto 20% auto;
-              text-align: center;
-              font-family: arial;
-              position: relative;
-              transition: transform 0.7s;
-              border-radius: 15px !important;
-              font-weight: bold;
-              font-size: 20px
-          }
-          .card:hover {
-              transform: scale(1.1);
 
-          }
+        .AllProducts {
+            width: 90%;
+            margin: 0 auto 10% auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+            margin: 10% auto 20% auto;
+            text-align: center;
+            font-family: arial;
+            position: relative;
+            transition: transform 0.7s;
+            border-radius: 15px !important;
+            font-weight: bold;
+            font-size: 20px
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
 
 
-            .price {
-                color: grey;
-                font-size: 22px;
-            }
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
 
-            .card button {
-                border: none;
-                outline: 0;
-                padding: 15px;
-                color: white;
-                text-align: center;
-                cursor: pointer;
-                width: 100%;
-                font-size: 15px;
-                position: absolute;
-                right: 0;
-            }
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            position: absolute;
+            right: 0;
+        }
 
     }
 
@@ -100,13 +100,13 @@
     /*-------------------Mobiles-------*/
 
     @media screen and (max-width:550px) {
-        
 
-            .AllProducts {
-                width: 95%;
-                margin: 0 auto 10% auto;
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                grid-template-rows: repeat(1, 1fr);
-            }
+
+        .AllProducts {
+            width: 95%;
+            margin: 0 auto 10% auto;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+        }
     }
