@@ -16,8 +16,9 @@
         transition: transform 0.7s;
         border-radius: 15px !important;
         font-weight: bold;
-        font-size: 20px
+        font-size: 20px;
     }
+
 
     .card:hover {
         transform: scale(1.1);

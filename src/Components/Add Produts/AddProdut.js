@@ -76,6 +76,19 @@ class AddProduct extends Component {
             <label className="btn btn-danger">Email</label>
           </div>
         </form>
+        <div className="item6">
+          <input type="checkbox" name="vehicle1" value="phone" /> Phone
+          <input type="checkbox" name="vehicle2" value="email" /> Email
+          <input type="checkbox" name="vehicle3" value="phone/email" />
+          Email/Phone
+          <buutton className="btn btn-success">Contact With</buutton>
+        </div>
+
+        <div className="item7">
+          <button type="submit" className="btn btn-success">
+            Submit
+          </button>
+        </div>
       </div>
     );
   }
