@@ -28,13 +28,13 @@
 .item1 button {
   width: 50%;
   height: 50px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
 }
 
 .item1 input {
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 /*----------------------------------Item2------------------------------*/
@@ -48,20 +48,20 @@
 .item2 button {
   width: 50%;
   height: 50px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
 }
 
 .item2 select {
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 /*-------------------------------Item3---------------------------------*/
 .item3 button {
   width: 50%;
   height: 50px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
 }
 
@@ -74,7 +74,7 @@
 
 .item3 textarea {
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 /*-----------------------------Item4-----------------------------------*/
@@ -89,7 +89,7 @@
 .item4 button {
   width: 50%;
   height: 50px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
 }
 
@@ -105,7 +105,7 @@
 .item5 label {
   width: 50%;
   height: 50px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
 }
 
@@ -113,7 +113,7 @@
   width: 100%;
   height: 50px;
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 /* -------------------------------------Item6--------------------------------- */
@@ -122,7 +122,7 @@
   float: right;
   margin-top: 40px;
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .item6 button {

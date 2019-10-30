@@ -7,7 +7,8 @@ import user from "./Components/users";
 import categories from "./Components/categories";
 import sub_categories from "./Components/sub categories";
 import products from "./Components/products";
-const HTTP_PORT = 5000;
+import images from "./Components/Multer/multer";
+const HTTP_PORT = 8080;
 
 // app.use(function(req, res) {
 //   res.status(404);
@@ -34,3 +35,4 @@ app.use("/user", user);
 app.use("/categories", categories);
 app.use("/sub_categories", sub_categories);
 app.use("/products", products);
+app.use("/Imges", images);

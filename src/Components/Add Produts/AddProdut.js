@@ -24,7 +24,7 @@ class AddProduct extends Component {
               <option value="laptop">Laptop</option>
               <option value="screen">Sceeen</option>
             </select>
-            <button className="btn btn-danger">Select a Product</button>
+            <button className="btn btn-danger">Select Type Of Product</button>
           </div>
           <div className="item3">
             <textarea
@@ -37,13 +37,15 @@ class AddProduct extends Component {
             <button className="btn btn-danger">Details Of Product</button>
           </div>
           <div className="item4">
-            <input
-              className="btn btn-secondary"
-              type="file"
-              name="filename"
-              multiple={true}
-              accept="image/gif, image/jpeg, image/png"
-            />
+            <form action="/profile" method="post" enctype="multipart/form-data">
+              <input
+                className="btn btn-secondary"
+                type="file"
+                name="filename"
+                multiple={true}
+                accept="image/gif, image/jpeg, image/png"
+              />
+            </form>
 
             <button type="submit" className="btn btn-danger">
               Add Your Product
