@@ -57,19 +57,4 @@ router.post("/uploadfile", upload.single("myFile"), (req, res, next) => {
   res.send(file);
 });
 
-router.post(
-  "/uploadmultiple",
-  upload.array("myFiles", 12),
-  (req, res, next) => {
-    const files = req.files;
-    if (!files) {
-      const error = new Error("Please choose files");
-      error.httpStatusCode = 400;
-      return next(error);
-    }
-
-    res.send(files);
-  }
-);
-
 export default router;
