@@ -1,5 +1,6 @@
 import db from "../db";
 import express from "express";
+import multer from "multer";
 const router = express.Router();
 
 /*---------------------------Get Products------------------------*/
@@ -37,7 +38,33 @@ router.get("/:id", (req, res, next) => {
 
 /*-----------------------------Create Product-------------------------------*/
 
-router.post("/", (req, res, next) => {
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "public");
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
+router.post("/upload", function(req, res) {
+  upload(req, res, function(err) {
+    console.log(err);
+    if (err instanceof multer.MulterError) {
+      return res.status(500).json(err);
+      // A Multer error occurred when uploading.
+    } else if (err) {
+      return res.status(500).json(err);
+      // An unknown error occurred when uploading.
+    }
+
+    return res.status(200).send(req.file);
+    // Everything went fine.
+  });
+});
+
+router.post("/", upload.array("files"), (req, res, next) => {
   const errors = [];
   if (!req.body.price) {
     errors.push("No price specified");
@@ -54,6 +81,10 @@ router.post("/", (req, res, next) => {
   if (!req.body.sub_categories_id) {
     errors.push("No sub_categories_id specified");
   }
+
+  if (req.files.length > 0) {
+    errors.push("No images provided");
+  }
   if (errors.length) {
     res.status(400).json({ error: errors.join(",") });
     return;
@@ -62,7 +93,7 @@ router.post("/", (req, res, next) => {
     price: req.body.price,
     description: req.body.description,
     title: req.body.title,
-    users_id: req.body.users_id,
+    users_id: 1,
     sub_categories_id: req.body.sub_categories_id
   };
 
@@ -80,6 +111,14 @@ router.post("/", (req, res, next) => {
       res.status(400).json({ error: err.message });
       return;
     }
+    const sql_product_images =
+      "INSERT INTO images (name, products_product_id) VALUES (?, ?)";
+    for (let index = 0; index < req.files.length; index++) {
+      const file = req.files[index];
+    }
+    this.req.files.map(async file => {
+      await db.run(sql_product_images, [file.filename, result.lastID]);
+    });
     res.json({
       message: "success",
       data: data,

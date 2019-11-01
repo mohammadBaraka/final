@@ -9,10 +9,32 @@ class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sub_categories: [],
       selectedFile: null,
+      product_name: "",
+      product_type: "",
+      product_area: "",
+      place_product: "",
+      number_product: "",
+      email_product: "",
       loaded: 0
     };
   }
+  componentDidMount() {
+    fetch("http://localhost:8000/sub_categories")
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          sub_categories: result.data
+        });
+      });
+  }
+
+  handleChangeInput = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   handlDefault = e => {
     e.preventDefault();
@@ -81,13 +103,22 @@ class AddProduct extends Component {
       });
     }
   };
-  onClickHandler = () => {
+  onSubmitHandler = event => {
+    event.preventDefault();
+
     const data = new FormData();
     for (var x = 0; x < this.state.selectedFile.length; x++) {
       data.append("file", this.state.selectedFile[x]);
     }
+    data.append("product_name", this.state.product_name);
+    data.append("product_type", this.state.product_type);
+    data.append("product_area", this.state.product_area);
+    data.append("place_product", this.state.place_product);
+    data.append("number_product", this.state.number_product);
+    data.append("email_product", this.state.email_product);
+
     axios
-      .post("http://localhost:8080/upload", data, {
+      .post("http://localhost:8000/images/upload", data, {
         onUploadProgress: ProgressEvent => {
           this.setState({
             loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100
@@ -99,6 +130,7 @@ class AddProduct extends Component {
         toast.success("upload success");
       })
       .catch(err => {
+        console.log(err);
         // then print response status
         toast.error("upload fail");
       });
@@ -106,25 +138,37 @@ class AddProduct extends Component {
   render() {
     return (
       <div className="AddProduct">
-        <form onSubmit={this.handlDefault}>
+        <form onSubmit={this.onSubmitHandler}>
           <div className="item1">
             <input
+              onChange={this.handleChangeInput}
               className="btn btn-secondary"
               type="text"
+              name="product_name"
               placeholder="Name Of Product"
             />
             <button className="btn btn-danger">Name Of Product</button>
           </div>
           <div className="item2">
-            <select className="btn btn-secondary">
-              <option value="phone">Phone</option>
-              <option value="laptop">Laptop</option>
-              <option value="screen">Sceeen</option>
+            <select
+              className="btn btn-secondary"
+              name="product_type"
+              onChange={this.handleChangeInput}
+            >
+              {this.state.sub_categories.map(sub_categorie => {
+                return (
+                  <option value={sub_categorie.sub_categories_id}>
+                    {sub_categorie.name}
+                  </option>
+                );
+              })}
             </select>
             <button className="btn btn-danger">Select Type Of Product</button>
           </div>
           <div className="item3">
             <textarea
+              onChange={this.handleChangeInput}
+              name="product_area"
               className="btn btn-secondary"
               type="text"
               cols="30"
@@ -133,65 +177,69 @@ class AddProduct extends Component {
             ></textarea>
             <button className="btn btn-danger">Details Of Product</button>
           </div>
-          <div className="container item4">
-            <div className="row">
-              <div className="offset-md-3 col-md-6">
-                <div className="form-group files">
-                  <label>Upload Your File </label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    multiple
-                    onChange={this.onChangeHandler}
-                  />
-                </div>
-                <div className="form-group">
-                  <ToastContainer />
-                  <Progress max="100" color="success" value={this.state.loaded}>
-                    {Math.round(this.state.loaded, 2)}%
-                  </Progress>
-                </div>
-
-                <button
-                  type="button"
-                  className="btn btn-success btn-block"
-                  onClick={this.onClickHandler}
-                >
-                  Upload
-                </button>
-              </div>
+          <div className="item4">
+            <input
+              onChange={this.handleChangeInput}
+              type="file"
+              className="btn btn-secondary"
+              multiple
+              onChange={this.onChangeHandler}
+            />
+            <button className="btn btn-danger">Upload Your File </button>
+            <div className="form-group">
+              <ToastContainer />
+              <Progress
+                classNam="btn btn-secondary"
+                max="100"
+                color="success"
+                value={this.state.loaded}
+              >
+                {Math.round(this.state.loaded, 6)}%
+              </Progress>
             </div>
           </div>
           <div className="item5">
             <input
+              onChange={this.handleChangeInput}
+              name="place_product"
               className="btn btn-secondary"
               type="text"
               placeholder="Place"
             />
             <label className="btn btn-danger">Place</label>
             <input
-              className="btn btn-secondary"
-              type="text"
-              placeholder="Name"
-            />
-            <label className="btn btn-danger">Name</label>
-            <input
+              onChange={this.handleChangeInput}
+              name="number_product"
               className="btn btn-secondary"
               type="number"
               placeholder="Phone Number"
             />
             <label className="btn btn-danger">Mobile</label>
             <input
+              onChange={this.handleChangeInput}
               className="btn btn-secondary"
+              name="email_product"
               type="email"
-              placeholder="Place"
+              placeholder="Email"
             />
             <label className="btn btn-danger">Email</label>
           </div>
 
           <div className="item6">
-            <input type="checkbox" name="vehicle1" value="phone" /> Phone
-            <input type="checkbox" name="vehicle2" value="email" /> Email
+            <input
+              onChange={this.handleChangeInput}
+              type="checkbox"
+              name="vehicle1"
+              value="phone"
+            />{" "}
+            Phone
+            <input
+              onChange={this.handleChangeInput}
+              type="checkbox"
+              name="vehicle2"
+              value="email"
+            />{" "}
+            Email
             <input type="checkbox" name="vehicle3" value="phone/email" />
             Email/Phone
             <button className="btn btn-success">Contact With</button>

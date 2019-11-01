@@ -1,8 +1,7 @@
 import express from "express";
 import multer from "multer";
-import cors from "cors";
+
 const router = express.Router();
-router.use(cors());
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {

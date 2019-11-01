@@ -7,7 +7,7 @@ class NavBar extends Component {
     return (
       <div className="NavBar">
         <div className="header">
-          <NavLink to="/add" target="_blank">
+          <NavLink to="/add">
             <button className="btn btn-success ">
               Add Product
               <i className="fa fa-plus-circle"></i>
