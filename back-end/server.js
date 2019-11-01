@@ -3,11 +3,11 @@ const app = express();
 import bodyParser from "body-parser";
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-import user from "./Components/users";
-import categories from "./Components/categories";
-import sub_categories from "./Components/sub categories";
-import products from "./Components/products";
-import images from "./Components/Multer/multer";
+import user from "./Routes/users";
+import categories from "./Routes/categories";
+import sub_categories from "./Routes/sub categories";
+import products from "./Routes/products";
+import images from "./Routes/Multer/multer";
 const HTTP_PORT = 8080;
 
 // app.use(function(req, res) {
@@ -35,4 +35,4 @@ app.use("/user", user);
 app.use("/categories", categories);
 app.use("/sub_categories", sub_categories);
 app.use("/products", products);
-app.use("/Imges", images);
+app.use("/images", images);
