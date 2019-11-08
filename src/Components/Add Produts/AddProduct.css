@@ -6,6 +6,7 @@
   padding: 70px;
   border-radius: 50px;
   box-shadow: 3px 3px 40px black;
+
 }
 
 .AddProduct .item1,
@@ -14,6 +15,7 @@
 .item4,
 .item5 {
   margin: 40px 0 0 250px;
+
 }
 
 /*----------------------Item1--------------------------------------*/

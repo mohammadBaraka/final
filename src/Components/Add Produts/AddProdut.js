@@ -142,7 +142,7 @@ class AddProduct extends Component {
           <div className="item1">
             <input
               onChange={this.handleChangeInput}
-              className="btn btn-secondary"
+              className="btn btn-dark"
               type="text"
               name="product_name"
               placeholder="Name Of Product"
@@ -151,7 +151,7 @@ class AddProduct extends Component {
           </div>
           <div className="item2">
             <select
-              className="btn btn-secondary"
+              className="btn btn-dark"
               name="product_type"
               onChange={this.handleChangeInput}
             >
@@ -169,7 +169,7 @@ class AddProduct extends Component {
             <textarea
               onChange={this.handleChangeInput}
               name="product_area"
-              className="btn btn-secondary"
+              className="btn btn-dark"
               type="text"
               cols="30"
               rows="5"
@@ -181,7 +181,7 @@ class AddProduct extends Component {
             <input
               onChange={this.handleChangeInput}
               type="file"
-              className="btn btn-secondary"
+              className="btn btn-dark"
               multiple
               onChange={this.onChangeHandler}
             />
@@ -189,7 +189,7 @@ class AddProduct extends Component {
             <div className="form-group">
               <ToastContainer />
               <Progress
-                classNam="btn btn-secondary"
+                classNam="btn btn-dark"
                 max="100"
                 color="success"
                 value={this.state.loaded}
@@ -202,7 +202,7 @@ class AddProduct extends Component {
             <input
               onChange={this.handleChangeInput}
               name="place_product"
-              className="btn btn-secondary"
+              className="btn btn-dark"
               type="text"
               placeholder="Place"
             />
@@ -210,14 +210,14 @@ class AddProduct extends Component {
             <input
               onChange={this.handleChangeInput}
               name="number_product"
-              className="btn btn-secondary"
+              className="btn btn-dark"
               type="number"
               placeholder="Phone Number"
             />
             <label className="btn btn-danger">Mobile</label>
             <input
               onChange={this.handleChangeInput}
-              className="btn btn-secondary"
+              className="btn btn-dark"
               name="email_product"
               type="email"
               placeholder="Email"
