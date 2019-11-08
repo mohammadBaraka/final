@@ -6,7 +6,7 @@
         grid-template-rows: repeat(3, 1fr);
     }
 
-    .card {
+    .card_all {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         max-width: 75%;
         margin: 20% auto 10% auto;
@@ -20,7 +20,7 @@
     }
 
 
-    .card:hover {
+    .card_all:hover {
         transform: scale(1.1);
 
     }
@@ -30,7 +30,7 @@
         font-size: 22px;
     }
 
-    .card button {
+    .card_all button {
         border: none;
         outline: 0;
         padding: 15px;
@@ -59,7 +59,7 @@
             grid-template-rows: repeat(2, 1fr);
         }
 
-        .card {
+        .card_all {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             max-width: 80%;
             margin: 10% auto 20% auto;
@@ -72,7 +72,7 @@
             font-size: 20px
         }
 
-        .card:hover {
+        .card_all:hover {
             transform: scale(1.1);
         }
 
@@ -82,7 +82,7 @@
             font-size: 22px;
         }
 
-        .card button {
+        .card_all button {
             border: none;
             outline: 0;
             padding: 15px;

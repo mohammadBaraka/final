@@ -147,7 +147,7 @@ class AddProduct extends Component {
               name="product_name"
               placeholder="Name Of Product"
             />
-            <button className="btn btn-danger">Name Of Product</button>
+            <label className="btn btn-danger">Name Of Product</label>
           </div>
           <div className="item2">
             <select
@@ -163,7 +163,7 @@ class AddProduct extends Component {
                 );
               })}
             </select>
-            <button className="btn btn-danger">Select Type Of Product</button>
+            <label className="btn btn-danger">Select Type Of Product</label>
           </div>
           <div className="item3">
             <textarea
@@ -175,7 +175,7 @@ class AddProduct extends Component {
               rows="5"
               placeholder="Details Of Product"
             ></textarea>
-            <button className="btn btn-danger">Details Of Product</button>
+            <label className="btn btn-danger">Details Of Product</label>
           </div>
           <div className="item4">
             <input
@@ -185,7 +185,7 @@ class AddProduct extends Component {
               multiple
               onChange={this.onChangeHandler}
             />
-            <button className="btn btn-danger">Upload Your File </button>
+            <label className="btn btn-danger">Upload Your File </label>
             <div className="form-group">
               <ToastContainer />
               <Progress

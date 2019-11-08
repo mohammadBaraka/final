@@ -3,7 +3,8 @@ import "./PhoneProducts.css";
 import Image from "./mobile.jpg";
 class PhoenProducts extends Component {
   state = {
-    productsPhone: [{ products: false }]
+    productsPhone: [{ products: false }],
+    phone: []
   };
   render() {
     const { productsPhone } = this.state;

@@ -3,14 +3,15 @@ import "./AllProuducts.css";
 import Image from "../AllProuducts/5.png";
 class AllProducts extends Component {
   state = {
-    productsAll: [{ products: false }]
+    productsAll: [{ products: false }],
+    AllProducts: []
   };
 
   render() {
     const { productsAll } = this.state;
     const theProduct = productsAll.map(product => {
       return (
-        <div product={this.state.product} className="card ltreffect">
+        <div product={this.state.product} className="card_all ltreffect">
           <img src={Image} alt="Denim Jeans" style={{ width: "100%" }} />
           <h1>Tailored Jeans</h1>
           <p className="price">$19.99</p>

@@ -6,7 +6,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="NavBar">
-        <div className="header">
+        <div className="header p-3 mb-2 bg-dark text-">
           <NavLink to="/add">
             <button className="btn btn-success ">
               Add Product
@@ -15,11 +15,11 @@ class NavBar extends Component {
           </NavLink>
           <NavLink
             to="/home"
-            className="btn btn-secondary sign"
+            className="btn btn-light sign"
             placeholder="Search"
           >
             <i className="fas fa-sign-in-alt fa-larg"></i>
-            Signin
+            Log In
           </NavLink>
         </div>
         <div className="NavigationBar">
@@ -27,7 +27,7 @@ class NavBar extends Component {
             Phones
             <i className="fa fa-mobile-alt"></i>
           </NavLink>
-          <NavLink to="/" className="btn btn-dark">
+          <NavLink to="/allproduct" className="btn btn-dark">
             New Products
             <i className="fa fa-spinner fa-spin"></i>
           </NavLink>

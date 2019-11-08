@@ -6,7 +6,8 @@ import ScreenProducts from "./Components/Screen Products/ScreenProducts";
 import AddProduct from "./Components/Add Produts/AddProdut";
 import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer";
-import HomePage from "./Components/Home Page/HomePge";
+import HomePage from "./Components/Log In/Login";
+import SignUp from "./Components/Sign UP/Singn Up";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
@@ -15,12 +16,15 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <NavBar />
-          <Route exact path="/" component={AllProuducts} />
+          <Route exact path="/" component={SignUp} />
+          <Route path="/allproduct" component={AllProuducts} />
+          <Route path="/login" component={HomePage} />
           <Route path="/phone" component={PhoenProducts} />
           <Route path="/laptops" component={LaptopProducts} />
           <Route path="/screen" component={ScreenProducts} />
           <Route path="/add" component={AddProduct} />
           <Route path="/home" component={HomePage} />
+
           <Footer />
         </div>
       </BrowserRouter>

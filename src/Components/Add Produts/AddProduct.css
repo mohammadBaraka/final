@@ -25,11 +25,12 @@
   grid-gap: 2%;
 }
 
-.item1 button {
+.item1 label {
   width: 50%;
   height: 50px;
   font-size: 17px;
   font-weight: bold;
+  line-height: 35px;
 }
 
 .item1 input {
@@ -45,11 +46,12 @@
   grid-gap: 2%;
 }
 
-.item2 button {
+.item2 label {
   width: 50%;
   height: 50px;
   font-size: 17px;
   font-weight: bold;
+  line-height: 35px;
 }
 
 .item2 select {
@@ -58,11 +60,13 @@
 }
 
 /*-------------------------------Item3---------------------------------*/
-.item3 button {
+.item3 label {
   width: 50%;
   height: 50px;
   font-size: 17px;
   font-weight: bold;
+  /* text-align: center; */
+  line-height: 35px;
 }
 
 .item3 {
@@ -86,11 +90,12 @@
   grid-gap: 2%;
 }
 
-.item4 button {
+.item4 label {
   width: 50%;
   height: 50px;
   font-size: 17px;
   font-weight: bold;
+  line-height: 35px;
 }
 
 /*--------------------------------Item5---------------------------------*/
@@ -107,6 +112,7 @@
   height: 50px;
   font-size: 17px;
   font-weight: bold;
+  line-height: 35px;
 }
 
 .item5 input {
