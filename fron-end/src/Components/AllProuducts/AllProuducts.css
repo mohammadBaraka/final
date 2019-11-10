@@ -1,0 +1,20 @@
+    .AllProducts {
+        width: 80%;
+        margin: 0 auto 10% auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 100px 0;
+    }
+
+    .card_all {
+        transition: transform 1s;
+
+    }
+
+
+
+    .card_all:hover {
+        transform: scale(1.1);
+
+    }
