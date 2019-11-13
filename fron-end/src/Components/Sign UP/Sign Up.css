@@ -24,8 +24,42 @@
     padding: 35px 0px;
     color: #fff;
     position: absolute;
-    top: -110px;
-    left: 8px;
+    top: -150px;
+    left: 6px;
     box-shadow: 1px 1px 7px 1px black;
     border-radius: 10px;
+}
+
+.pass_signup {
+    position: relative;
+}
+
+.signup_eye {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.pass_signup1 {
+    position: relative;
+}
+
+.signup_eye1 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

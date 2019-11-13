@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
-import "./HomePge.css";
+import "./Login.css";
 import { NavLink } from "react-router-dom";
 class HomePage extends Component {
   handleDefault = e => {
     e.preventDefault();
+  };
+  muFunction = () => {
+    const check = document.getElementById("myInput");
+    if (check.type === "password") {
+      check.type = "text";
+    } else {
+      check.type = "password";
+    }
   };
   render() {
     return (
@@ -16,9 +24,9 @@ class HomePage extends Component {
               <MDBCol md="12">
                 <form onSubmit={this.handleDefault}>
                   <div className="form-header">
-                    <h3>
-                      <i class="fa fa-lock"></i> Login:
-                    </h3>
+                    <h2>
+                      <i class="fa fa-lock"></i> Login
+                    </h2>
                   </div>
                   <div className="purple-text form_input">
                     <MDBInput
@@ -30,13 +38,22 @@ class HomePage extends Component {
                       error="wrong"
                       success="right"
                     />
-                    <MDBInput
-                      label="Type your password"
-                      icon="lock"
-                      group
-                      type="password"
-                      validate
-                    />
+                    <div className="pass">
+                      <MDBInput
+                        id="myInput"
+                        label="Type your password"
+                        icon="lock"
+                        group
+                        type="password"
+                        validate
+                      />
+                      <h4
+                        onClick={this.muFunction}
+                        className=" text-purple eye_position"
+                      >
+                        <i className="fas fa-eye"></i>
+                      </h4>
+                    </div>
                   </div>
 
                   <button className="btn btn-success">Login</button>

@@ -42,8 +42,8 @@ router.post("/", (req, res, next) => {
   if (!req.body.first_name) {
     errors.push("No first_name specified");
   }
-  if (!req.body.last_name) {
-    errors.push("No last_name specified");
+  if (!req.body.password) {
+    errors.push("No password specified");
   }
   if (!req.body.email) {
     errors.push("No email specified");
@@ -60,17 +60,17 @@ router.post("/", (req, res, next) => {
   }
   const data = {
     first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    password: req.body.password,
     email: req.body.email,
     address: req.body.address,
     phone_number: req.body.phone_number
   };
 
   const sql =
-    "INSERT INTO users (first_name, last_name, email, address, phone_number) VALUES (?,?,?,?,?)";
+    "INSERT INTO users (first_name, password, email, address, phone_number) VALUES (?,?,?,?,?)";
   const params = [
     data.first_name,
-    data.last_name,
+    data.password,
     data.email,
     data.address,
     data.phone_number
@@ -93,7 +93,7 @@ router.post("/", (req, res, next) => {
 router.patch("/:id", (req, res, next) => {
   const data = {
     first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    password: req.body.password,
     email: req.body.email,
     address: req.body.address,
     phone_number: req.body.phone_number
@@ -101,14 +101,14 @@ router.patch("/:id", (req, res, next) => {
   db.run(
     `UPDATE users set 
         first_name = COALESCE(?,first_name), 
-        last_name = COALESCE(?,last_name) ,
+        password = COALESCE(?,password) ,
         email = COALESCE(?,email), 
         address =  COALESCE(? ,address ),                 
         phone_number =  COALESCE(? ,phone_number )                
            WHERE id = ?`,
     [
       data.first_name,
-      data.last_name,
+      data.password,
       data.email,
       data.address,
       data.phone_number,

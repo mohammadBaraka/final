@@ -1,8 +1,16 @@
 import React, { Component } from "react";
+import Clock from "react-clock";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
 class NavBar extends Component {
+  /* state = {
+    date: new Date()
+  };
+  componentDidMount() {
+    setInterval(() => this.setState({ date: new Date() }), 1000);
+  }
+  */
   render() {
     return (
       <div className="NavBar">
@@ -21,6 +29,10 @@ class NavBar extends Component {
             <i className="fas fa-sign-in-alt fa-larg"></i>
             Log In
           </NavLink>
+          {/*   <div className="oclock">
+            <Clock value={this.state.date} />
+          </div>
+    */}
         </div>
         <div className="NavigationBar">
           <NavLink exact to="/phone" className="btn btn-info active ">

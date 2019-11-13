@@ -11,6 +11,7 @@
     "mdbootstrap": "^4.8.10",
     "mdbreact": "^4.22.0",
     "react": "^16.9.0",
+    "react-clock": "^2.4.0",
     "react-dom": "^16.9.0",
     "react-flippy": "^0.1.5",
     "react-router-dom": "^5.1.2",

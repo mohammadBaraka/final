@@ -7,6 +7,22 @@ class SignUp extends Component {
   handleDefault = e => {
     e.preventDefault();
   };
+  muFunctionSignUp = () => {
+    const check = document.getElementById("myInput");
+    if (check.type === "password") {
+      check.type = "text";
+    } else {
+      check.type = "password";
+    }
+  };
+  muFunctionSignUp1 = () => {
+    const check = document.getElementById("myInput1");
+    if (check.type === "password") {
+      check.type = "text";
+    } else {
+      check.type = "password";
+    }
+  };
   render() {
     return (
       <div className="Sign_Up">
@@ -17,12 +33,13 @@ class SignUp extends Component {
               <MDBCol md="12">
                 <form onSubmit={this.handleDefault}>
                   <div className="header_signup">
-                    <h3>
-                      <i class="fa fa-user"></i> Register:
-                    </h3>
+                    <h2>
+                      <i class="fa fa-user"></i> Register
+                    </h2>
                   </div>
                   <div className="purple-text form_input">
                     <MDBInput
+                      size="lg"
                       label="Your name"
                       icon="user"
                       group
@@ -32,6 +49,7 @@ class SignUp extends Component {
                       success="right"
                     />
                     <MDBInput
+                      size="lg"
                       label="Your email"
                       icon="envelope"
                       group
@@ -40,27 +58,62 @@ class SignUp extends Component {
                       error="wrong"
                       success="right"
                     />
+
+                    <div className="pass_signup">
+                      <MDBInput
+                        size="lg"
+                        id="myInput"
+                        label="Your password"
+                        icon="lock"
+                        group
+                        type="password"
+                        validate
+                      />
+                      <h4
+                        onClick={this.muFunctionSignUp}
+                        className="signup_eye"
+                      >
+                        <i className="fas fa-eye"></i>
+                      </h4>
+                    </div>
+                    <div className="pass_signup1">
+                      <MDBInput
+                        size="lg"
+                        id="myInput1"
+                        label="Confirm your Password"
+                        icon="exclamation-triangle"
+                        group
+                        type="password"
+                        validate
+                        error="wrong"
+                        success="right"
+                      />
+                      <h4
+                        onClick={this.muFunctionSignUp1}
+                        className="signup_eye1"
+                      >
+                        <i className="fas fa-eye"></i>
+                      </h4>
+                    </div>
+
                     <MDBInput
-                      label="Confirm your email"
-                      icon="exclamation-triangle"
-                      group
-                      type="text"
-                      validate
-                      error="wrong"
-                      success="right"
+                      size="lg"
+                      label="Phone Number"
+                      type="number"
+                      icon="fa fa-phone-square"
+                      onChange={this.handleChangeInput}
                     />
                     <MDBInput
-                      label="Your password"
-                      icon="lock"
-                      group
-                      type="password"
-                      validate
+                      size="lg"
+                      label="Address"
+                      icon="fa fa-map-marker"
+                      onChange={this.handleChangeInput}
                     />
                   </div>
 
                   <button className="btn btn-success">Sign Up</button>
                   <NavLink to="login">
-                    <button className="btn btn-light sign_up">Log In</button>
+                    <button className="btn btn-danger sign_up">Log In</button>
                   </NavLink>
                 </form>
               </MDBCol>

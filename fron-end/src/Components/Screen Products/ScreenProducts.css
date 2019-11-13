@@ -4,17 +4,18 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        grid-gap: 100px 0;
+        grid-gap: 100px 100px;
 
     }
 
     .card-screen {
 
-        transition: transform 0.7s;
+        box-shadow: 1px 1px 5px #636e72;
+        transition: box-shadow 0.5s;
 
     }
 
     .card-screen:hover {
-        transform: scale(1.1);
+        box-shadow: 3px 3px 20px 1px #2d3436;
 
     }

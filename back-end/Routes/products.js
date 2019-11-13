@@ -3,6 +3,17 @@ import express from "express";
 import multer from "multer";
 const router = express.Router();
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "public/products");
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
+
 /*---------------------------Get Products------------------------*/
 
 router.get("/", (req, res, next) => {
@@ -38,16 +49,6 @@ router.get("/:id", (req, res, next) => {
 
 /*-----------------------------Create Product-------------------------------*/
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "public");
-  },
-  filename: function(req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  }
-});
-
-const upload = multer({ storage: storage });
 router.post("/upload", function(req, res) {
   upload(req, res, function(err) {
     console.log(err);
@@ -64,7 +65,7 @@ router.post("/upload", function(req, res) {
   });
 });
 
-router.post("/", upload.array("files"), (req, res, next) => {
+router.post("/images", upload.array("files"), (req, res, next) => {
   const errors = [];
   if (!req.body.price) {
     errors.push("No price specified");

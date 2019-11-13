@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCol
-} from "mdbreact";
+
 import "./AllProuducts.css";
 import Image from "../AllProuducts/5.png";
 class AllProducts extends Component {
@@ -21,25 +13,26 @@ class AllProducts extends Component {
     const theProduct = productsAll.map(product => {
       return (
         <div product={this.state.product} className="card_all">
-          <MDBCol>
-            <MDBCard style={{ width: "22rem" }}>
-              <MDBCardImage
-                className="img-fluid text-center"
-                src={Image}
-                waves
-              />
-              <MDBCardBody>
-                <MDBCardTitle>Card title</MDBCardTitle>
-                <MDBCardText>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card&apos;s content.
-                </MDBCardText>
-                <MDBBtn color="danger" href="#">
-                  MDBBtn
-                </MDBBtn>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
+          <div className="card_all">
+            {/* Card image */}
+            <img className="card-img-top" src={Image} alt="Card image cap" />
+            {/* Card content */}
+            <div className="card-body">
+              {/* Title */}
+              <h4 className="card-title">
+                <p>Card title</p>
+              </h4>
+              {/* Text */}
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              {/* Button */}
+              <a href="#" className="btn btn-danger">
+                Show Details
+              </a>
+            </div>
+          </div>
         </div>
       );
     });

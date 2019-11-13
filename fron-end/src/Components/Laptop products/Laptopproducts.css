@@ -8,13 +8,14 @@
 
     }
 
-    .card-laptp {
-        transition: transform 1s;
+    .card-lap {
+        box-shadow: 1px 1px 5px #636e72;
+        transition: box-shadow 0.5s;
+
     }
 
-    .card-laptp:hover {
-        transform: scale(1.1);
-
+    .card-lap:hover {
+        box-shadow: 3px 3px 20px 1px #2d3436;
     }
 
     img {

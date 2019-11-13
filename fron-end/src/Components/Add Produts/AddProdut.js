@@ -3,7 +3,7 @@ import axios from "axios";
 import { Progress } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { MDBInput, MDBCol, MDBSelect } from "mdbreact";
+import { MDBInput, MDBCol } from "mdbreact";
 import "./AddProduct.css";
 
 class AddProduct extends Component {
@@ -186,7 +186,7 @@ class AddProduct extends Component {
               <div className="form-group">
                 <ToastContainer />
                 <Progress
-                  classNam="btn btn-dark"
+                  classNam="btn btn-success"
                   max="100"
                   color="success"
                   value={this.state.loaded}
@@ -194,26 +194,6 @@ class AddProduct extends Component {
                   {Math.round(this.state.loaded, 6)}%
                 </Progress>
               </div>
-              <MDBInput
-                label="Address"
-                size="lg"
-                icon="fa fa-map-marker"
-                onChange={this.handleChangeInput}
-              />
-              <MDBInput
-                label="Phone Number"
-                size="lg"
-                type="number"
-                icon="fa fa-phone-square"
-                onChange={this.handleChangeInput}
-              />
-              <MDBInput
-                label="Email"
-                size="lg"
-                type="email"
-                icon="fa fa-envelope"
-                onChange={this.handleChangeInput}
-              />
               <input
                 onChange={this.handleChangeInput}
                 type="checkbox"
