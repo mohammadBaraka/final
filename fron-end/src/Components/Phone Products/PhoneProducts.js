@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import "./PhoneProducts.css";
 import Image from "./mobile.jpg";
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCol
-} from "mdbreact";
+import { NavLink } from "react-router-dom";
+
 class PhoenProducts extends Component {
   state = {
     productsPhone: [{ products: false }],
@@ -34,10 +27,9 @@ class PhoenProducts extends Component {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              {/* Button */}
-              <a href="#" className="btn btn-danger">
+              <NavLink to="details" className="btn btn-danger">
                 Show Details
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

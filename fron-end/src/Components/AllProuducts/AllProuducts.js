@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { NavLink, Link } from "react-router-dom";
 import "./AllProuducts.css";
 import Image from "../AllProuducts/5.png";
 class AllProducts extends Component {
@@ -15,7 +15,12 @@ class AllProducts extends Component {
         <div product={this.state.product} className="card_all">
           <div className="card_all">
             {/* Card image */}
-            <img className="card-img-top" src={Image} alt="Card image cap" />
+            <img
+              className="card-img-top"
+              src={Image}
+              alt="Card image cap"
+              draggable="false"
+            />
             {/* Card content */}
             <div className="card-body">
               {/* Title */}
@@ -28,9 +33,10 @@ class AllProducts extends Component {
                 the bulk of the card's content.
               </p>
               {/* Button */}
-              <a href="#" className="btn btn-danger">
+              <NavLink to="details" className="btn btn-danger">
+                {" "}
                 Show Details
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

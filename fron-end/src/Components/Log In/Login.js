@@ -25,7 +25,7 @@ class HomePage extends Component {
                 <form onSubmit={this.handleDefault}>
                   <div className="form-header">
                     <h2>
-                      <i class="fa fa-lock"></i> Login
+                      <i className="fa fa-lock"></i> Login
                     </h2>
                   </div>
                   <div className="purple-text form_input">

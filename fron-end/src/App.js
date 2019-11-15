@@ -8,6 +8,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer";
 import HomePage from "./Components/Log In/Login";
 import SignUp from "./Components/Sign UP/Singn Up";
+import Details from "./Components/Details/Details";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/screen" component={ScreenProducts} />
           <Route path="/add" component={AddProduct} />
           <Route path="/home" component={HomePage} />
+          <Route path="/details" component={Details} />
 
           <Footer />
         </div>

@@ -1,10 +1,10 @@
     .LaptopProducts {
         width: 80%;
-        margin: 0 auto 10% auto;
+        margin: auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        grid-gap: 100px 0;
+        grid-gap: 50px 50px;
 
     }
 
