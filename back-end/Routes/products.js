@@ -46,7 +46,20 @@ router.get("/:id", (req, res, next) => {
     });
   });
 });
-
+router.get("/cat/:id", (req, res, next) => {
+  const sql = "select * from products where sub_categories_id = ?";
+  const params = [req.params.id];
+  db.all(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: row
+    });
+  });
+});
 /*-----------------------------Create Product-------------------------------*/
 
 router.post("/upload", function(req, res) {

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Details.css";
 class Details extends Component {
+  state = {
+    details: []
+  };
+
   render() {
     return (
       <div className="Details">

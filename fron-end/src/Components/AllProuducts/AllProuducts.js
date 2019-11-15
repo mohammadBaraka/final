@@ -1,58 +1,58 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./AllProuducts.css";
 import Image from "../AllProuducts/5.png";
 class AllProducts extends Component {
   state = {
-    productsAll: [{ products: false }],
-    AllProducts: []
+    productsAll: []
   };
 
+  async componentDidMount() {
+    try {
+      const response = await fetch("http://localhost:8000/products");
+      const result = await response.json();
+      if (result) {
+        const productsAll = result.data;
+        this.setState({ productsAll });
+        console.log(this.state.productsAll);
+      } else console.log(result.message);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   render() {
-    const { productsAll } = this.state;
-    const theProduct = productsAll.map(product => {
-      return (
-        <div product={this.state.product} className="card_all">
-          <div className="card_all">
-            {/* Card image */}
-            <img
-              className="card-img-top"
-              src={Image}
-              alt="Card image cap"
-              draggable="false"
-            />
-            {/* Card content */}
-            <div className="card-body">
-              {/* Title */}
-              <h4 className="card-title">
-                <p>Card title</p>
-              </h4>
-              {/* Text */}
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              {/* Button */}
-              <NavLink to="details" className="btn btn-danger">
-                {" "}
-                Show Details
-              </NavLink>
+    return (
+      <div className="AllProducts">
+        {this.state.productsAll.map(item => (
+          <div key="allProduct">
+            <div className="card_all">
+              <div className="card_all">
+                {/* Card image */}
+                <img
+                  className="card-img-top"
+                  src={Image}
+                  alt="Card image cap"
+                  draggable="false"
+                />
+                {/* Card content */}
+                <div className="card-body">
+                  {/* Title */}
+                  <h4 className="card-title">
+                    <p>{item.title}</p>
+                  </h4>
+                  {/* Text */}
+                  <p className="card-text">{item.description}</p>
+                  {/* Button */}
+                  <NavLink to="details" className="btn btn-danger">
+                    {" "}
+                    Show Details
+                  </NavLink>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      );
-    });
-    return (
-      <div className="AllProducts  col-md-10 col-xs-12 col-sm-12">
-        {theProduct}
-        {theProduct}
-        {theProduct}
-        {theProduct}
-        {theProduct}
-        {theProduct}
-        {theProduct}
-        {theProduct}
-        {theProduct}
+        ))}
       </div>
     );
   }

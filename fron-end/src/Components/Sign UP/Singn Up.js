@@ -4,9 +4,24 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import "./Sign Up.css";
 
 class SignUp extends Component {
+  state = {
+    name: "",
+    email: "",
+    password: "",
+    number: "",
+    address: ""
+  };
+
   handleDefault = e => {
     e.preventDefault();
   };
+
+  handleChangeInput = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
   muFunctionSignUp = () => {
     const check = document.getElementById("myInput");
     if (check.type === "password") {
@@ -15,6 +30,7 @@ class SignUp extends Component {
       check.type = "password";
     }
   };
+
   muFunctionSignUp1 = () => {
     const check = document.getElementById("myInput1");
     if (check.type === "password") {
@@ -23,6 +39,7 @@ class SignUp extends Component {
       check.type = "password";
     }
   };
+
   render() {
     return (
       <div className="Sign_Up">
@@ -34,7 +51,7 @@ class SignUp extends Component {
                 <form onSubmit={this.handleDefault}>
                   <div className="header_signup">
                     <h2>
-                      <i class="fa fa-user"></i> Register
+                      <i className="fa fa-user"></i> Register
                     </h2>
                   </div>
                   <div className="purple-text form_input">
@@ -47,6 +64,8 @@ class SignUp extends Component {
                       validate
                       error="wrong"
                       success="right"
+                      name="name"
+                      onChange={this.handleChangeInput}
                     />
                     <MDBInput
                       size="lg"
@@ -57,6 +76,8 @@ class SignUp extends Component {
                       validate
                       error="wrong"
                       success="right"
+                      name="email"
+                      onChange={this.handleChangeInput}
                     />
 
                     <div className="pass_signup">
@@ -68,6 +89,8 @@ class SignUp extends Component {
                         group
                         type="password"
                         validate
+                        name="password"
+                        onChange={this.handleChangeInput}
                       />
                       <h4
                         onClick={this.muFunctionSignUp}
@@ -87,6 +110,8 @@ class SignUp extends Component {
                         validate
                         error="wrong"
                         success="right"
+                        name="password"
+                        onChange={this.handleChangeInput}
                       />
                       <h4
                         onClick={this.muFunctionSignUp1}
@@ -101,12 +126,14 @@ class SignUp extends Component {
                       label="Phone Number"
                       type="number"
                       icon="fa fa-phone-square"
+                      name="number"
                       onChange={this.handleChangeInput}
                     />
                     <MDBInput
                       size="lg"
                       label="Address"
                       icon="fa fa-map-marker"
+                      name="address"
                       onChange={this.handleChangeInput}
                     />
                   </div>

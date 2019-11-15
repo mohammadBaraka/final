@@ -3,6 +3,17 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
 class HomePage extends Component {
+  state = {
+    email: "",
+    password: ""
+  };
+
+  handleChangeInput = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
   handleDefault = e => {
     e.preventDefault();
   };
@@ -37,6 +48,8 @@ class HomePage extends Component {
                       validate
                       error="wrong"
                       success="right"
+                      name="email"
+                      onChange={this.handleChangeInput}
                     />
                     <div className="pass">
                       <MDBInput
@@ -46,6 +59,8 @@ class HomePage extends Component {
                         group
                         type="password"
                         validate
+                        name="password"
+                        onChange={this.handleChangeInput}
                       />
                       <h4
                         onClick={this.muFunction}

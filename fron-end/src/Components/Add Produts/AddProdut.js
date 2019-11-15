@@ -12,13 +12,10 @@ class AddProduct extends Component {
     this.state = {
       sub_categories: [],
       selectedFile: null,
+      loaded: 0,
       product_name: "",
       product_type: "",
-      product_area: "",
-      place_product: "",
-      number_product: "",
-      email_product: "",
-      loaded: 0
+      product_area: ""
     };
   }
   componentDidMount() {
@@ -151,7 +148,9 @@ class AddProduct extends Component {
               <MDBInput
                 label="Name Of Product"
                 size="lg"
+                name=""
                 icon="fa fa-spinner"
+                name="product_name"
                 onChange={this.handleChangeInput}
               />
               <select
@@ -173,6 +172,7 @@ class AddProduct extends Component {
                 size="lg"
                 type="textarea"
                 icon="pencil-alt"
+                name="product_area"
                 color="red"
                 onChange={this.handleChangeInput}
               />
