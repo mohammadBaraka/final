@@ -24,11 +24,11 @@ class ScreenProducts extends Component {
 
   render() {
     return (
-      <div className="AllProducts">
+      <div className="ScreenProducts">
         {this.state.productScreen.map(item_screen => (
           <div key="allProduct">
-            <div className="card_all">
-              <div className="card_all">
+            <div className="card-screen">
+              <div className="card-screen">
                 {/* Card image */}
                 <img
                   className="card-img-top"

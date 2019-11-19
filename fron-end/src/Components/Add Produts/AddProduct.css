@@ -39,3 +39,7 @@ select {
   outline: none;
   border: none;
 }
+
+.btn-light {
+  width: 100%;
+}

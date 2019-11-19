@@ -3,7 +3,7 @@ import axios from "axios";
 import { Progress } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { MDBInput, MDBCol } from "mdbreact";
+import { MDBInput, MDBCol, MDBContainer } from "mdbreact";
 import "./AddProduct.css";
 
 class AddProduct extends Component {
@@ -37,6 +37,7 @@ class AddProduct extends Component {
   handlDefault = e => {
     e.preventDefault();
   };
+
   checkMimeType = event => {
     //getting file object
     let files = event.target.files;
@@ -133,6 +134,7 @@ class AddProduct extends Component {
         toast.error("upload fail");
       });
   };
+
   render() {
     return (
       <div className="AddProduct purple-text ">
@@ -167,22 +169,27 @@ class AddProduct extends Component {
                   );
                 })}
               </select>
-              <MDBInput
-                label="Details Of Product"
-                size="lg"
-                type="textarea"
-                icon="pencil-alt"
-                name="product_area"
-                color="red"
-                onChange={this.handleChangeInput}
-              />
-              <MDBInput
-                className="btn btn-light"
-                onChange={this.handleChangeInput}
-                type="file"
-                multiple
-                onChange={this.onChangeHandler}
-              />
+              <MDBContainer fluid>
+                <MDBInput
+                  label="Details Of Product"
+                  size="lg"
+                  type="textarea"
+                  icon="pencil-alt"
+                  name="product_area"
+                  color="red"
+                  onChange={this.handleChangeInput}
+                />
+
+                <input
+                  size="lg"
+                  className="btn btn-light"
+                  block
+                  onChange={this.handleChangeInput}
+                  type="file"
+                  multiple
+                  onChange={this.onChangeHandler}
+                />
+              </MDBContainer>
               <div className="form-group">
                 <ToastContainer />
                 <Progress

@@ -8,15 +8,6 @@
 
 }
 
-.oclock {
-
-    width: 20px;
-    position: absolute;
-    top: 5px;
-    left: 770px;
-    border-radius: 10 px;
-}
-
 .header button {
     width: 20%;
     height: 65px;

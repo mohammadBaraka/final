@@ -23,11 +23,11 @@ class LaptopProducts extends Component {
 
   render() {
     return (
-      <div className="AllProducts">
+      <div className="LaptopProducts">
         {this.state.productsLaptop.map(item_lap => (
           <div key="allProduct">
-            <div className="card_all">
-              <div className="card_all">
+            <div className="card-lap">
+              <div className="card-lap">
                 {/* Card image */}
                 <img
                   className="card-img-top"
