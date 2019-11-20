@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 const app = express();
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -16,6 +17,7 @@ const HTTP_PORT = 8000;
 // });
 
 // Start server
+app.use(express.static(path.join(__dirname, "./public"))); // <-- location of public dir
 app.use(cors());
 app.get("/", (req, res, next) => {
   res.json({ message: "Ok" });

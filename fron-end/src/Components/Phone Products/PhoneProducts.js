@@ -32,7 +32,7 @@ class PhoenProducts extends Component {
                 {/* Card image */}
                 <img
                   className="card-img-top"
-                  src={Image}
+                  src={`http://localhost:8000/${item.name}`}
                   alt="Card image cap"
                   draggable="false"
                 />

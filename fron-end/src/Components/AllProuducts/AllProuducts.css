@@ -3,15 +3,20 @@
         margin: 0 auto 10% auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 100px 100px;
+        grid-gap: 50px;
     }
 
     .card_all {
         box-shadow: 1px 1px 5px #636e72;
         transition: box-shadow 0.5s;
 
+
     }
 
+    . .card_all img {
+        width: 100%;
+        height: 10%;
+    }
 
 
     .card_all:hover {

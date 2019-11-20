@@ -25,13 +25,13 @@ class LaptopProducts extends Component {
     return (
       <div className="LaptopProducts">
         {this.state.productsLaptop.map(item_lap => (
-          <div key="allProduct">
+          <div key="laptopProducts">
             <div className="card-lap">
               <div className="card-lap">
                 {/* Card image */}
                 <img
                   className="card-img-top"
-                  src={Image}
+                  src={`http://localhost:8000/${item_lap.name}`}
                   alt="Card image cap"
                   draggable="false"
                 />

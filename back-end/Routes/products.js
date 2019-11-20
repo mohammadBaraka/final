@@ -17,7 +17,8 @@ const upload = multer({ storage: storage });
 /*---------------------------Get Products------------------------*/
 
 router.get("/", (req, res, next) => {
-  const sql = "select * from products";
+  const sql =
+    "select * from products join images where products.product_id = images.products_product_id";
   const params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {

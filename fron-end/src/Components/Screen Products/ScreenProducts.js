@@ -32,7 +32,7 @@ class ScreenProducts extends Component {
                 {/* Card image */}
                 <img
                   className="card-img-top"
-                  src={Image}
+                  src={`http://localhost:8000/${item_screen.name}`}
                   alt="Card image cap"
                   draggable="false"
                 />
