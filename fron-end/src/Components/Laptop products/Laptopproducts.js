@@ -28,14 +28,13 @@ class LaptopProducts extends Component {
           <div key="laptopProducts">
             <div className="card-lap">
               <div className="card-lap">
-                {/* Card image */}
                 <img
                   className="card-img-top"
-                  src={`http://localhost:8000/${item_lap.name}`}
+                  src={`http://localhost:8000/products/cat/1/${item_lap.name}`}
                   alt="Card image cap"
                   draggable="false"
                 />
-                {/* Card content */}
+
                 <div className="card-body">
                   {/* Title */}
                   <h4 className="card-title">

@@ -31,7 +31,6 @@ class PhoenProducts extends Component {
               <div className="card-phone">
                 {/* Card image */}
                 <img
-                  className="card-img-top"
                   src={`http://localhost:8000/${item.name}`}
                   alt="Card image cap"
                   draggable="false"

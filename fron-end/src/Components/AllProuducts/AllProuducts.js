@@ -27,29 +27,25 @@ class AllProducts extends Component {
         {this.state.productsAll.map(item => (
           <div key="allProduct">
             <div className="card_all">
-              <div className="card_all">
-                {/* Card image */}
-                <img
-                  className="card-img-top"
-                  src={`http://localhost:8000/${item.name}`}
-                  alt="Card image cap"
-                  draggable="false"
-                />
-                {/* Card content */}
-                <div className="card-body">
-                  {/* Title */}
-                  <h4 className="card-title">
-                    <p>{item.title}</p>
-                  </h4>
-                  {/* Text */}
-                  <p className="card-text">{item.description}</p>
-                  {/* Button */}
-                  <NavLink to="details" className="btn btn-danger">
-                    {" "}
-                    Show Details
-                  </NavLink>
-                </div>
+              {/* Card image */}
+              <img
+                className="card-img-top"
+                src={`http://localhost:8000/${item.name}`}
+                alt="Card image cap"
+                draggable="false"
+              />
+              <div className="ditails">
+                <h4 className="card-title">
+                  <p>{item.title}</p>
+                </h4>
+                {/* Text */}
+                <p className="card-text">{item.description}</p>
               </div>
+              {/* Button */}
+              <NavLink to="details" className="btn btn-danger btn_all">
+                {" "}
+                Show Details
+              </NavLink>
             </div>
           </div>
         ))}
