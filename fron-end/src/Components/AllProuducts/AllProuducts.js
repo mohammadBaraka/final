@@ -20,12 +20,18 @@ class AllProducts extends Component {
       console.log(err);
     }
   }
-
+  deleteProduct = item => {
+    const productsAll = this.state.productsAll;
+    const product = productsAll.findIndex(product => product === item);
+    productsAll.splice(product, 1);
+    this.setState({ productsAll });
+  };
   render() {
     return (
       <div className="AllProducts">
-        {this.state.productsAll.map(item => (
-          <div key="allProduct">
+        {this.state.productsAll.map((item, index) => (
+          <div key={index}>
+            <button onClick={() => this.deleteProduct(item)}>Delete</button>
             <div className="card_all">
               {/* Card image */}
               <img

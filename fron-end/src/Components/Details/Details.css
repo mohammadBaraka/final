@@ -26,22 +26,29 @@
 }
 
 .details_product {
-    width: 50%;
-    height: 70%;
-    position: absolute;
-    top: 17%;
-    left: 5%;
-    box-shadow: 1px 1px 7px 1px black;
-    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 
 }
 
 .details_owner {
-    margin: 50px auto 0 auto;
-    width: 80%;
+    margin: 250px 0 0 40px;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    box-shadow: 1px 1px 20px black;
+}
+
+.img_details {
+    margin: 150px 0 0 0px;
+    width: 100%;
+    height: auto;
 }
 
 .details_owner h4 {
-    color: red;
+    color: black;
     font-weight: bold;
+    margin-left: 20px;
+    margin-top: 40px;
+
 }

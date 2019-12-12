@@ -21,12 +21,23 @@ class ScreenProducts extends Component {
       console.log(err);
     }
   }
-
+  deleteProductScreen = item => {
+    const productScreen = this.state.productScreen;
+    const screen = productScreen.findIndex(screen => screen === item);
+    productScreen.splice(screen, 1);
+    this.setState({ productScreen });
+  };
   render() {
     return (
       <div className="ScreenProducts">
         {this.state.productScreen.map(item_screen => (
           <div key="allProduct">
+            <button
+              className="btn btn-danger"
+              onClick={() => this.deleteProductScreen(item_screen)}
+            >
+              Delete
+            </button>
             <div className="card-screen">
               <div className="card-screen">
                 {/* Card image */}
@@ -45,7 +56,7 @@ class ScreenProducts extends Component {
                   {/* Text */}
                   <p className="card-text">{item_screen.description}</p>
                   {/* Button */}
-                  <NavLink to="details" className="btn btn-danger">
+                  <NavLink to="details" className="btn btn-infos">
                     {" "}
                     Show Details
                   </NavLink>

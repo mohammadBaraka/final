@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Image from "./laptop1.jpeg";
 import "./Details.css";
 class Details extends Component {
   state = {
@@ -20,6 +21,10 @@ class Details extends Component {
               <h4>Email : mohammadbarakat342@gmail.com</h4>
               <h4>Phone : 76445487</h4>
               <h4>Address : Beyrout</h4>
+              <h4>Price : 850</h4>
+            </div>
+            <div className="img_details">
+              <img src={Image} />
             </div>
           </div>
         </div>

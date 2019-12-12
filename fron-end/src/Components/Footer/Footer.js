@@ -168,7 +168,7 @@ class Footer extends Component {
             <div className="row">
               <div className="col-md-12 ">
                 <div className="text-center text-white">
-                  © 2018 Your Company. All Rights Reserved.
+                  © 2019 Done by : Mohammad Barakat.
                 </div>
               </div>
             </div>

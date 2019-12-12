@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./Laptopproducts.css";
-import Image from "./laptop1.jpeg";
+// import Image from "./laptop1.jpeg";
 class LaptopProducts extends Component {
   state = {
     productsLaptop: []
@@ -21,16 +21,29 @@ class LaptopProducts extends Component {
     }
   }
 
+  deleteProductLaptop = item => {
+    const productsLaptop = this.state.productsLaptop;
+    const lap = productsLaptop.findIndex(lap => lap === item);
+    productsLaptop.splice(lap, 1);
+    this.setState({ productsLaptop });
+  };
+
   render() {
     return (
       <div className="LaptopProducts">
-        {this.state.productsLaptop.map(item_lap => (
-          <div key="laptopProducts">
+        {this.state.productsLaptop.map((item_lap, indexLap) => (
+          <div key={indexLap}>
+            <button
+              className="btn btn-danger"
+              onClick={() => this.deleteProductLaptop(item_lap)}
+            >
+              Delete
+            </button>
             <div className="card-lap">
               <div className="card-lap">
                 <img
                   className="card-img-top"
-                  src={`http://localhost:8000/products/cat/1/${item_lap.name}`}
+                  src={`http://localhost:8000/${item_lap.name}`}
                   alt="Card image cap"
                   draggable="false"
                 />
@@ -43,7 +56,7 @@ class LaptopProducts extends Component {
                   {/* Text */}
                   <p className="card-text">{item_lap.description}</p>
                   {/* Button */}
-                  <NavLink to="details" className="btn btn-danger">
+                  <NavLink to="details" className="btn btn-info">
                     {" "}
                     Show Details
                   </NavLink>

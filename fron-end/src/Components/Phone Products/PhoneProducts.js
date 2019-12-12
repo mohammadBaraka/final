@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./PhoneProducts.css";
-import Image from "./mobile.jpg";
+// import Image from "./mobile.jpg";
 import { NavLink } from "react-router-dom";
 
 class PhoenProducts extends Component {
@@ -21,12 +21,24 @@ class PhoenProducts extends Component {
       console.log(err);
     }
   }
-
+  deletProductMobile = item => {
+    const productPhone = this.state.productPhone;
+    const phone = productPhone.findIndex(phone => phone === item);
+    productPhone.splice(phone, 1);
+    this.setState({ productPhone });
+  };
   render() {
     return (
       <div className="PhoenProducts">
-        {this.state.productPhone.map(item => (
-          <div key="item_pone">
+        {this.state.productPhone.map((item, indexMobile) => (
+          <div key={indexMobile}>
+            <button
+              onClick={() => {
+                this.deletProductMobile(item);
+              }}
+            >
+              Delete
+            </button>
             <div className="card-phone">
               <div className="card-phone">
                 {/* Card image */}
