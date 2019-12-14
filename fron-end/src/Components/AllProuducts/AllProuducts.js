@@ -24,12 +24,25 @@ class AllProducts extends Component {
     const productsAll = this.state.productsAll;
     const product = productsAll.findIndex(product => product === item);
     productsAll.splice(product, 1);
+    if (!product) {
+      return <p>sdasdasdasd</p>;
+    }
+
     this.setState({ productsAll });
   };
+
+  noProducts = () => {
+    const { productsAll } = this.state;
+
+    this.setState({ productsAll });
+  };
+
   render() {
-    return (
-      <div className="AllProducts">
-        {this.state.productsAll.map((item, index) => (
+    const { productsAll } = this.state;
+    const product = productsAll.length;
+    const productMap = product ? (
+      this.state.productsAll.map((item, index) => {
+        return (
           <div key={index}>
             <button onClick={() => this.deleteProduct(item)}>Delete</button>
             <div className="card_all">
@@ -54,9 +67,14 @@ class AllProducts extends Component {
               </NavLink>
             </div>
           </div>
-        ))}
+        );
+      })
+    ) : (
+      <div className="no_products">
+        <p>There Is No Product To Show !</p>
       </div>
     );
+    return <div className="AllProducts">{productMap}</div>;
   }
 }
 

@@ -28,10 +28,12 @@ class ScreenProducts extends Component {
     this.setState({ productScreen });
   };
   render() {
-    return (
-      <div className="ScreenProducts">
-        {this.state.productScreen.map(item_screen => (
-          <div key="allProduct">
+    const { productScreen } = this.state;
+    const product = productScreen.length;
+    const productMapScreen = product ? (
+      this.state.productScreen.map((item_screen, indexScreen) => {
+        return (
+          <div key={indexScreen}>
             <button
               className="btn btn-danger"
               onClick={() => this.deleteProductScreen(item_screen)}
@@ -64,9 +66,14 @@ class ScreenProducts extends Component {
               </div>
             </div>
           </div>
-        ))}
+        );
+      })
+    ) : (
+      <div className="no_products">
+        <p>There Is No Product To Show !</p>
       </div>
     );
+    return <div className="ScreenProducts">{productMapScreen}</div>;
   }
 }
 

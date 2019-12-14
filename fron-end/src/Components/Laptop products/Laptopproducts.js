@@ -29,9 +29,11 @@ class LaptopProducts extends Component {
   };
 
   render() {
-    return (
-      <div className="LaptopProducts">
-        {this.state.productsLaptop.map((item_lap, indexLap) => (
+    const { productsLaptop } = this.state;
+    const productLap = productsLaptop.length;
+    const productMapLap = productLap ? (
+      this.state.productsLaptop.map((item_lap, indexLap) => {
+        return (
           <div key={indexLap}>
             <button
               className="btn btn-danger"
@@ -64,9 +66,14 @@ class LaptopProducts extends Component {
               </div>
             </div>
           </div>
-        ))}
+        );
+      })
+    ) : (
+      <div className="no_products">
+        <p>There Is No Product To Show !</p>
       </div>
     );
+    return <div className="LaptopProducts">{productMapLap}</div>;
   }
 }
 

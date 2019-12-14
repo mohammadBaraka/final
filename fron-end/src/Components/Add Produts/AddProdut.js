@@ -32,6 +32,7 @@ class AddProduct extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+    console.log(event.target.value);
   };
 
   handlDefault = e => {
@@ -201,24 +202,7 @@ class AddProduct extends Component {
                   {Math.round(this.state.loaded, 6)}%
                 </Progress>
               </div>
-              <input
-                onChange={this.handleChangeInput}
-                type="checkbox"
-                name="vehicle1"
-                value="phone"
-              />{" "}
-              Phone
-              <input
-                onChange={this.handleChangeInput}
-                type="checkbox"
-                name="vehicle2"
-                value="email"
-              />{" "}
-              Email
-              <input type="checkbox" name="vehicle3" value="phone/email" />
-              Email/Phone
-              <button className="btn btn-success">Contact With</button>
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="btn btn-success submit">
                 Submit
               </button>
             </form>
