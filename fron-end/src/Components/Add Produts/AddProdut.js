@@ -37,7 +37,10 @@ class AddProduct extends Component {
 
   handlDefault = e => {
     e.preventDefault();
+    console.log(this.state);
   };
+
+  addProduct = product => {};
 
   checkMimeType = event => {
     //getting file object
@@ -142,12 +145,12 @@ class AddProduct extends Component {
         <div className="items">
           <div className="shop_product">
             <h2>
-              <i class="fa fa-cart-plus" aria-hidden="true"></i>
+              <i className="fa fa-cart-plus" aria-hidden="true"></i>
               Add Product
             </h2>
           </div>
           <MDBCol md="12">
-            <form onSubmit={this.onSubmitHandler}>
+            <form onSubmit={this.handlDefault}>
               <MDBInput
                 label="Name Of Product"
                 size="lg"
@@ -208,6 +211,7 @@ class AddProduct extends Component {
             </form>
           </MDBCol>
         </div>
+     
       </div>
     );
   }
