@@ -24,16 +24,6 @@ class AllProducts extends Component {
     const productsAll = this.state.productsAll;
     const product = productsAll.findIndex(product => product === item);
     productsAll.splice(product, 1);
-    if (!product) {
-      return <p>sdasdasdasd</p>;
-    }
-
-    this.setState({ productsAll });
-  };
-
-  noProducts = () => {
-    const { productsAll } = this.state;
-
     this.setState({ productsAll });
   };
 
@@ -44,24 +34,32 @@ class AllProducts extends Component {
       this.state.productsAll.map((item, index) => {
         return (
           <div key={index}>
-            <button onClick={() => this.deleteProduct(item)}>Delete</button>
             <div className="card_all">
+              <button
+                className="btn-delete"
+                onClick={() => this.deleteProduct(item)}
+              >
+                Delete
+              </button>
+              <div className="header-product">
+                <p className="card-title">{item.title}</p>
+              </div>
               {/* Card image */}
               <img
                 className="card-img-top"
                 src={`http://localhost:8000/${item.name}`}
                 alt="Card image cap"
                 draggable="false"
+                width="100%"
+                height="50%"
               />
-              <div className="ditails">
-                <h4 className="card-title">
-                  <p>{item.title}</p>
-                </h4>
+              <div className="details">
                 {/* Text */}
                 <p className="card-text">{item.description}</p>
               </div>
+
               {/* Button */}
-              <NavLink to="details" className="btn btn-danger btn_all">
+              <NavLink to="details" className="btn btn-dark btn_all">
                 {" "}
                 Show Details
               </NavLink>
@@ -74,7 +72,7 @@ class AllProducts extends Component {
         <p>There Is No Product To Show !</p>
       </div>
     );
-    return <div className="AllProducts">{productMap}</div>;
+    return <div className="AllProducts ">{productMap}</div>;
   }
 }
 
