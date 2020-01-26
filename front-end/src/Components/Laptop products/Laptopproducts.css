@@ -64,3 +64,27 @@
   color: #888;
   margin-bottom: 50px !important;
 }
+
+/* Media */
+
+@media (max-width: 1100px) {
+  .LaptopProducts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px 50px;
+    width: 85%;
+    height: auto;
+    margin: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .LaptopProducts {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 50px 50px;
+    width: 75%;
+    height: auto;
+    margin: auto;
+  }
+}

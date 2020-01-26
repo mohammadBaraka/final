@@ -5,7 +5,7 @@
 
 .card_sign {
   margin: auto;
-  width: 32%;
+  width: 35%;
   height: auto;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 70px;
@@ -48,6 +48,8 @@
   bottom: 0;
   cursor: pointer;
 }
+
+/*  */
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

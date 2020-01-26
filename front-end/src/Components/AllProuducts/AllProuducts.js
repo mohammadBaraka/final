@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./AllProuducts.css";
-// import Image from "../AllProuducts/5.png";
+
 class AllProducts extends Component {
   state = {
     productsAll: []
@@ -55,7 +55,10 @@ class AllProducts extends Component {
               />
               <div className="details">
                 {/* Text */}
-                <p className="card-text">{item.description}</p>
+                <p className="card-text">
+                  {item.description}
+                  <span>Price:{item.price}$</span>
+                </p>
               </div>
 
               {/* Button */}
