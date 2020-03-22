@@ -1,6 +1,6 @@
 import express from "express";
-import path from "path";
 const app = express();
+import path from "path";
 import bodyParser from "body-parser";
 import cors from "cors";
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -9,7 +9,7 @@ import user from "./Routes/users";
 import categories from "./Routes/categories";
 import sub_categories from "./Routes/sub categories";
 import products from "./Routes/products";
-import images from "./Routes/Multer/multer";
+
 const HTTP_PORT = 8000;
 
 // app.use(function(req, res) {
@@ -38,4 +38,3 @@ app.use("/user", user);
 app.use("/categories", categories);
 app.use("/sub_categories", sub_categories);
 app.use("/products", products);
-app.use("/images", images);

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./Laptopproducts.css";
-// import Image from "./laptop1.jpeg";
 class LaptopProducts extends Component {
   state = {
     productsLaptop: []
@@ -32,9 +31,9 @@ class LaptopProducts extends Component {
     const { productsLaptop } = this.state;
     const productLap = productsLaptop.length;
     const productMapLap = productLap ? (
-      this.state.productsLaptop.map((item_lap, indexLap) => {
+      this.state.productsLaptop.map(item_lap => {
         return (
-          <div key={indexLap}>
+          <div key={item_lap.product_id}>
             <div className="card-lap">
               <button
                 className="btn-delete-lap"
@@ -47,13 +46,12 @@ class LaptopProducts extends Component {
               </div>
               <img
                 className="card-img-top"
-                src={`http://localhost:8000/${item_lap.name}`}
+                src={`http://localhost:8000/${item_lap.images}`}
                 alt="Card image cap"
                 draggable="false"
                 width="100%"
                 height="50%"
               />
-
               <div className="card-body-lap">
                 <p className="card-text">{item_lap.description}</p>
               </div>

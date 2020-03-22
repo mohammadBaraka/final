@@ -17,8 +17,7 @@ const upload = multer({ storage: storage });
 /*---------------------------Get Products------------------------*/
 
 router.get("/", (req, res, next) => {
-  const sql =
-    "select * from products join images where products.product_id = images.products_product_id";
+  const sql = "select * from products ";
   const params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -96,7 +95,9 @@ router.post("/images", upload.array("files"), (req, res, next) => {
   if (!req.body.sub_categories_id) {
     errors.push("No sub_categories_id specified");
   }
-
+  if (!req.body.images) {
+    errors.push("No sub_categories_id specified");
+  }
   if (req.files.length > 0) {
     errors.push("No images provided");
   }
@@ -108,32 +109,34 @@ router.post("/images", upload.array("files"), (req, res, next) => {
     price: req.body.price,
     description: req.body.description,
     title: req.body.title,
+    images: req.body.images,
     users_id: 1,
     sub_categories_id: req.body.sub_categories_id
   };
 
   const sql =
-    "INSERT INTO products (price, description, title, users_id, sub_categories_id) VALUES (?,?,?,?,?)";
+    "INSERT INTO products (price, description, title, users_id, sub_categories_id , images) VALUES (?,?,?,?,? , ?)";
   const params = [
     data.price,
     data.description,
     data.title,
     data.users_id,
-    data.sub_categories_id
+    data.sub_categories_id,
+    data.images
   ];
   db.run(sql, params, function(err, result) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
     }
-    const sql_product_images =
-      "INSERT INTO images (name, products_product_id) VALUES (?, ?)";
-    for (let index = 0; index < req.files.length; index++) {
-      const file = req.files[index];
-    }
-    this.req.files.map(async file => {
-      await db.run(sql_product_images, [file.filename, result.lastID]);
-    });
+    // const sql_product_images =
+    //   "INSERT INTO images (name, products_product_id) VALUES (?, ?)";
+    // for (let index = 0; index < req.files.length; index++) {
+    //   const file = req.files[index];
+    // }
+    // this.req.files.map(async file => {
+    //   await db.run(sql_product_images, [file.filename, result.lastID]);
+    // });
     res.json({
       message: "success",
       data: data,
@@ -150,6 +153,7 @@ router.patch("/:id", (req, res, next) => {
     title: req.body.title,
     description: req.body.description,
     users_id: req.body.users_id,
+    users_id: req.body.images,
     sub_categories_id: req.body.sub_categories_id
   };
   db.run(
@@ -158,7 +162,8 @@ router.patch("/:id", (req, res, next) => {
         title = COALESCE(?,title) ,
         description = COALESCE(?,description), 
         users_id =  COALESCE(? ,users_id ),                 
-        sub_categories_id =  COALESCE(? ,sub_categories_id )                
+        sub_categories_id =  COALESCE(? ,sub_categories_id ),                
+        images =  COALESCE(? ,images )                
            WHERE product_id = ?`,
     [
       data.price,
@@ -166,6 +171,7 @@ router.patch("/:id", (req, res, next) => {
       data.description,
       data.users_id,
       data.sub_categories_id,
+      data.sub_images,
       req.params.id
     ],
     function(err, result) {

@@ -31,9 +31,9 @@ class ScreenProducts extends Component {
     const { productScreen } = this.state;
     const product = productScreen.length;
     const productMapScreen = product ? (
-      this.state.productScreen.map((item_screen, indexScreen) => {
+      this.state.productScreen.map(item_screen => {
         return (
-          <div key={indexScreen}>
+          <div key={item_screen.product_id}>
             <div className="card-screen ">
               <button
                 className="btn-delete-scr"
@@ -47,7 +47,7 @@ class ScreenProducts extends Component {
               {/* Card image */}
               <img
                 className="card-img-top"
-                src={`http://localhost:8000//products/cat/3${item_screen.name}`}
+                src={`http://localhost:8000/${item_screen.images}`}
                 alt="Card image cap"
                 draggable="false"
                 width="100%"

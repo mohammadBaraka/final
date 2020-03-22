@@ -167,7 +167,10 @@ class AddProduct extends Component {
               >
                 {this.state.sub_categories.map(sub_categorie => {
                   return (
-                    <option value={sub_categorie.sub_categories_id}>
+                    <option
+                      key={sub_categorie.id}
+                      value={sub_categorie.sub_categories_id}
+                    >
                       {sub_categorie.name}
                     </option>
                   );
@@ -211,7 +214,6 @@ class AddProduct extends Component {
             </form>
           </MDBCol>
         </div>
-     
       </div>
     );
   }

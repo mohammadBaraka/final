@@ -31,9 +31,9 @@ class PhoenProducts extends Component {
     const { productPhone } = this.state;
     const product = productPhone.length;
     const productMapPhone = product ? (
-      this.state.productPhone.map((item, indexMobile) => {
+      this.state.productPhone.map(item => {
         return (
-          <div key={indexMobile}>
+          <div key={item.product_id}>
             <div className="card-phone">
               <button
                 className="btn-delete-phone"
@@ -48,7 +48,7 @@ class PhoenProducts extends Component {
               </div>
               {/* Card image */}
               <img
-                src={`http://localhost:8000/${item.name}`}
+                src={`http://localhost:8000/${item.images}`}
                 alt="Card image cap"
                 draggable="false"
                 width="100%"

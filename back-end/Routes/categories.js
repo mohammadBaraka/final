@@ -3,7 +3,8 @@ import express from "express";
 const router = express.Router();
 /*---------------------------Get Categories----------------------------*/
 router.get("/", (req, res, next) => {
-  const sql = "select * from categories";
+  const sql =
+    "select * from categories join images where categories.categories_id = images.products_product_id";
   const params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {

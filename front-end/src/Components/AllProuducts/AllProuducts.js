@@ -31,9 +31,9 @@ class AllProducts extends Component {
     const { productsAll } = this.state;
     const product = productsAll.length;
     const productMap = product ? (
-      this.state.productsAll.map((item, index) => {
+      this.state.productsAll.map(item => {
         return (
-          <div key={index}>
+          <div key={item.product_id}>
             <div className="card_all">
               <button
                 className="btn-delete"
@@ -47,7 +47,7 @@ class AllProducts extends Component {
               {/* Card image */}
               <img
                 className="card-img-top"
-                src={`http://localhost:8000/${item.name}`}
+                src={`http://localhost:8000/${item.images}`}
                 alt="Card image cap"
                 draggable="false"
                 width="100%"

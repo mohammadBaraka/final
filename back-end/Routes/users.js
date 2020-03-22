@@ -5,7 +5,8 @@ const router = express.Router();
 /*---------------------------Get Users----------------------------*/
 
 router.get("/", (req, res, next) => {
-  const sql = "select * from users";
+  const sql =
+    "select * from users join products where products.product_id = users_id";
   const params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {

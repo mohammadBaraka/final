@@ -23,9 +23,9 @@ class Details extends Component {
   }
 
   render() {
-    const detailsOwner = this.state.details.map((item, indexDetails) => {
+    const detailsOwner = this.state.details.map(item => {
       return (
-        <div key={indexDetails}>
+        <div key={item.id}>
           <p>
             <span>Name:</span> {item.first_name}
           </p>
@@ -38,6 +38,9 @@ class Details extends Component {
           <p>
             <span>Phone:</span> {item.phone_number}
           </p>
+          <div className="img_details">
+            <img src={`http://localhost:8000/${item.images}`} />
+          </div>
         </div>
       );
     });
@@ -52,9 +55,6 @@ class Details extends Component {
           </div>
           <div className="details_product">
             <div className="details_owner">{detailsOwner}</div>
-            <div className="img_details">
-              <img src={Image} />
-            </div>
           </div>
         </div>
       </div>
