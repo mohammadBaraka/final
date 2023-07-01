@@ -4,13 +4,15 @@ import cors from "cors";
 import user from "./Routes/users.js";
 import categories from "./Routes/categories.js";
 import sub_categories from "./Routes/subCategories.js";
+import auth from "./Routes/authorization.js";
 import products from "./Routes/products.js";
 import express from "express";
+import cookieParser from "cookie-parser";
 const app = express();
-
+app.use(cookieParser());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 // app.use(express.static(path.join(__dirname, "./public"))); // <-- location of public dir
 app.use(cors());
 app.get("/", (req, res, next) => {
@@ -28,6 +30,7 @@ app.use("/user", user);
 app.use("/categories", categories);
 app.use("/sub_categories", sub_categories);
 app.use("/products", products);
+app.use("/auth", auth);
 const HTTP_PORT = process.env.PORT || 8000;
 app.listen(HTTP_PORT, () => {
   console.log(`Server Running On Port http://localhost:${HTTP_PORT}`);

@@ -14,9 +14,10 @@
     "react-clock": "^2.4.0",
     "react-dom": "^16.9.0",
     "react-flippy": "^0.1.5",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^6.14.1",
     "react-scripts": "^5.0.1",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.1.1",
+    "sweetalert2": "^11.7.12"
   },
   "scripts": {
     "start": "react-scripts start",

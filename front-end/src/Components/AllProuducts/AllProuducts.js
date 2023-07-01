@@ -22,7 +22,7 @@ function AllProuducts() {
       {products.map((prod) => {
         console.log(prod.images);
         return (
-          <div>
+          <div key={prod.product_id}>
             <div className="card_all">
               <button
                 className="btn-delete"

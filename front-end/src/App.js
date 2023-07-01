@@ -6,10 +6,10 @@ import ScreenProducts from "./Components/Screen Products/ScreenProducts";
 import AddProduct from "./Components/Add Produts/AddProdut";
 import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer";
-import HomePage from "./Components/Log In/Login";
+import Login from "./Components/Log In/Login";
 import SignUp from "./Components/Sign UP/Singn Up";
 import Details from "./Components/Details/Details";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -17,16 +17,16 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <NavBar />
-          <Route exact path="/signup" component={SignUp} />
-          <Route path="/allproduct" component={AllProuducts} />
-          <Route path="/login" component={HomePage} />
-          <Route path="/phone" component={PhoenProducts} />
-          <Route path="/laptops" component={LaptopProducts} />
-          <Route path="/screen" component={ScreenProducts} />
-          <Route path="/add" component={AddProduct} />
-          <Route path="/home" component={HomePage} />
-          <Route path="/details" component={Details} />
-
+          <Routes>
+            <Route path="/" element={<AllProuducts />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/phone" element={<PhoenProducts />} />
+            <Route path="/laptops" element={<LaptopProducts />} />
+            <Route path="/screen" element={<ScreenProducts />} />
+            <Route path="/add" element={<AddProduct />} />
+            <Route path="/details" element={<Details />} />
+          </Routes>
           <Footer />
         </div>
       </BrowserRouter>

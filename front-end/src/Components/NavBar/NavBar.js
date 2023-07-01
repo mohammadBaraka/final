@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Clock from "react-clock";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
@@ -22,7 +21,7 @@ class NavBar extends Component {
             </button>
           </NavLink>
           <NavLink
-            to="/home"
+            to="/login"
             className="btn btn-light sign"
             placeholder="Search"
           >
@@ -39,7 +38,7 @@ class NavBar extends Component {
             Phones
             <i className="fa fa-mobile-alt"></i>
           </NavLink>
-          <NavLink to="/allproduct" className="btn btn-dark">
+          <NavLink to="/" className="btn btn-dark">
             New Products
             <i className="fa fa-spinner fa-spin"></i>
           </NavLink>

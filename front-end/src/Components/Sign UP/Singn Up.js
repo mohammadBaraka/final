@@ -1,156 +1,174 @@
-import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import "./Sign Up.css";
-
-class SignUp extends Component {
-  state = {
-    name: "",
-    email: "",
-    password: "",
-    number: "",
-    address: ""
-  };
-
-  handleDefault = e => {
+import { useState } from "react";
+import axios from "axios";
+import { handeMessage } from "../SweetAlert/SweetAlert";
+function SingnUp() {
+  const URL = `http://localhost:8000/auth/register`;
+  const [showPass, setShowPass] = useState("password");
+  const [showPassConfirm, setShowPassConfirm] = useState("password");
+  const [first_name, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
+    try {
+      const res = await axios.post(URL, {
+        first_name,
+        email,
+        password,
+        passwordConfirm,
+        phone_number,
+        address,
+      });
+      console.log(res.data);
+      handeMessage("success", res.data.message);
+      setTimeout(() => {
+        // history.path("/login");
+      }, 2500);
+    } catch (error) {
+      console.log(error.response.data);
 
-  handleChangeInput = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  muFunctionSignUp = () => {
-    const check = document.getElementById("myInput");
-    if (check.type === "password") {
-      check.type = "text";
-    } else {
-      check.type = "password";
+      handeMessage("error", error.response.data);
     }
   };
+  return (
+    <div className="Sign_Up">
+      <div className="card_sign">
+        <MDBContainer>
+          <MDBRow>
+            <MDBCol md="12">
+              <form>
+                <div className="header_signup">
+                  <h2>
+                    <i className="fa fa-user"></i> Register
+                  </h2>
+                </div>
+                <div className="purple-text form_input">
+                  <MDBInput
+                    size="lg"
+                    label="Your name"
+                    icon="user"
+                    group
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                    name="name"
+                    value={first_name}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <MDBInput
+                    size="lg"
+                    label="Your email"
+                    icon="envelope"
+                    group
+                    type="email"
+                    validate
+                    error="wrong"
+                    success="right"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
 
-  muFunctionSignUp1 = () => {
-    const check = document.getElementById("myInput1");
-    if (check.type === "password") {
-      check.type = "text";
-    } else {
-      check.type = "password";
-    }
-  };
-
-  render() {
-    return (
-      <div className="Sign_Up">
-        {/*Form with header*/}
-        <div className="card_sign">
-          <MDBContainer>
-            <MDBRow>
-              <MDBCol md="12">
-                <form onSubmit={this.handleDefault}>
-                  <div className="header_signup">
-                    <h2>
-                      <i className="fa fa-user"></i> Register
-                    </h2>
-                  </div>
-                  <div className="purple-text form_input">
+                  <div className="pass_signup">
                     <MDBInput
                       size="lg"
-                      label="Your name"
-                      icon="user"
+                      id="myInput"
+                      label="Your password"
+                      icon="lock"
                       group
-                      type="text"
+                      type={showPass}
+                      validate
+                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <h4 className="signup_eye">
+                      <i
+                        className="fas fa-eye"
+                        onClick={() =>
+                          setShowPass(
+                            showPass === "password" ? "text" : "password"
+                          )
+                        }
+                      ></i>
+                    </h4>
+                  </div>
+                  <div className="pass_signup1">
+                    <MDBInput
+                      size="lg"
+                      id="myInput1"
+                      label="Confirm your Password"
+                      icon="exclamation-triangle"
+                      group
+                      type={showPassConfirm}
                       validate
                       error="wrong"
                       success="right"
-                      name="name"
-                      onChange={this.handleChangeInput}
+                      name="password"
+                      value={passwordConfirm}
+                      onChange={(e) => setPasswordConfirm(e.target.value)}
                     />
-                    <MDBInput
-                      size="lg"
-                      label="Your email"
-                      icon="envelope"
-                      group
-                      type="email"
-                      validate
-                      error="wrong"
-                      success="right"
-                      name="email"
-                      onChange={this.handleChangeInput}
-                    />
-
-                    <div className="pass_signup">
-                      <MDBInput
-                        size="lg"
-                        id="myInput"
-                        label="Your password"
-                        icon="lock"
-                        group
-                        type="password"
-                        validate
-                        name="password"
-                        onChange={this.handleChangeInput}
-                      />
-                      <h4
-                        onClick={this.muFunctionSignUp}
-                        className="signup_eye"
-                      >
-                        <i className="fas fa-eye"></i>
-                      </h4>
-                    </div>
-                    <div className="pass_signup1">
-                      <MDBInput
-                        size="lg"
-                        id="myInput1"
-                        label="Confirm your Password"
-                        icon="exclamation-triangle"
-                        group
-                        type="password"
-                        validate
-                        error="wrong"
-                        success="right"
-                        name="password"
-                        onChange={this.handleChangeInput}
-                      />
-                      <h4
-                        onClick={this.muFunctionSignUp1}
-                        className="signup_eye1"
-                      >
-                        <i className="fas fa-eye"></i>
-                      </h4>
-                    </div>
-
-                    <MDBInput
-                      size="lg"
-                      label="Phone Number"
-                      type="number"
-                      icon="fa fa-phone-square"
-                      name="number"
-                      onChange={this.handleChangeInput}
-                    />
-                    <MDBInput
-                      size="lg"
-                      label="Address"
-                      icon="fa fa-map-marker"
-                      name="address"
-                      onChange={this.handleChangeInput}
-                    />
+                    <h4 className="signup_eye1">
+                      <i
+                        className="fas fa-eye"
+                        onClick={() =>
+                          setShowPassConfirm(
+                            showPassConfirm === "password" ? "text" : "password"
+                          )
+                        }
+                      ></i>
+                    </h4>
                   </div>
 
-                  <button className="btn btn-success">Sign Up</button>
-                  <NavLink to="login">
-                    <button className="btn btn-danger sign_up">Log In</button>
-                  </NavLink>
-                </form>
-              </MDBCol>
-            </MDBRow>
-          </MDBContainer>
-        </div>
-        {/*/Form with header*/}
+                  <MDBInput
+                    size="lg"
+                    label="Phone Number"
+                    type="number"
+                    icon="fa fa-phone-square"
+                    name="number"
+                    value={phone_number}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
+                  <MDBInput
+                    size="lg"
+                    label="Address"
+                    icon="fa fa-map-marker"
+                    name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </div>
+                {/* <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    color: "red",
+                  }}
+                >
+                  {err}
+                </p> */}
+                <button className="btn btn-success" onClick={handleSubmit}>
+                  Sign Up
+                </button>
+                <NavLink to="login">
+                  <button className="btn btn-danger sign_up">Log In</button>
+                </NavLink>
+              </form>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       </div>
-    );
-  }
+      {/*/Form with header*/}
+    </div>
+  );
 }
 
-export default SignUp;
+export default SingnUp;
