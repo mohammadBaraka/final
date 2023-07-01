@@ -3,18 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^1.4.0",
     "bootstrap": "^4.3.1",
-    "fileupload": "^1.0.0",
+    "fileupload": "^0.2.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "mdbootstrap": "^4.8.10",
-    "mdbreact": "^4.22.0",
+    "mdbreact": "^5.2.0",
     "react": "^16.9.0",
     "react-clock": "^2.4.0",
     "react-dom": "^16.9.0",
     "react-flippy": "^0.1.5",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "^5.0.1",
     "reactstrap": "^8.1.1"
   },
   "scripts": {

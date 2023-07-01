@@ -1,4 +1,4 @@
-import db from "../db";
+import db from "../db.js";
 import express from "express";
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.get("/", (req, res, next) => {
 
     res.json({
       message: "success",
-      data: rows
+      data: rows,
     });
   });
 });
@@ -31,7 +31,7 @@ router.get("/:id", (req, res, next) => {
     }
     res.json({
       message: "success",
-      data: row
+      data: row,
     });
   });
 });
@@ -64,7 +64,7 @@ router.post("/", (req, res, next) => {
     password: req.body.password,
     email: req.body.email,
     address: req.body.address,
-    phone_number: req.body.phone_number
+    phone_number: req.body.phone_number,
   };
 
   const sql =
@@ -74,9 +74,9 @@ router.post("/", (req, res, next) => {
     data.password,
     data.email,
     data.address,
-    data.phone_number
+    data.phone_number,
   ];
-  db.run(sql, params, function(err, result) {
+  db.run(sql, params, function (err, result) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
@@ -84,7 +84,7 @@ router.post("/", (req, res, next) => {
     res.json({
       message: "success",
       data: data,
-      id: this.lastID
+      id: this.lastID,
     });
   });
 });
@@ -97,7 +97,7 @@ router.patch("/:id", (req, res, next) => {
     password: req.body.password,
     email: req.body.email,
     address: req.body.address,
-    phone_number: req.body.phone_number
+    phone_number: req.body.phone_number,
   };
   db.run(
     `UPDATE users set 
@@ -113,9 +113,9 @@ router.patch("/:id", (req, res, next) => {
       data.email,
       data.address,
       data.phone_number,
-      req.params.id
+      req.params.id,
     ],
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
@@ -123,7 +123,7 @@ router.patch("/:id", (req, res, next) => {
       res.json({
         message: "success",
         data: data,
-        changes: this.changes
+        changes: this.changes,
       });
     }
   );
@@ -132,16 +132,17 @@ router.patch("/:id", (req, res, next) => {
 /*-------------------------------Delete Users-----------------------------------*/
 
 router.delete("/:id", (req, res, next) => {
-  db.run("DELETE FROM users WHERE id = ?", req.params.id, function(
-    err,
-    result
-  ) {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
+  db.run(
+    "DELETE FROM users WHERE id = ?",
+    req.params.id,
+    function (err, result) {
+      if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+      }
+      res.json({ message: "deleted", changes: this.changes });
     }
-    res.json({ message: "deleted", changes: this.changes });
-  });
+  );
 });
 
 export default router;

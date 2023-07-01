@@ -1,15 +1,15 @@
-import db from "../db";
+import db from "../db.js";
 import express from "express";
 import multer from "multer";
 const router = express.Router();
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, "public/products");
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
-  }
+  },
 });
 
 const upload = multer({ storage: storage });
@@ -27,7 +27,7 @@ router.get("/", (req, res, next) => {
 
     res.json({
       message: "success",
-      data: rows
+      data: rows,
     });
   });
 });
@@ -42,7 +42,7 @@ router.get("/:id", (req, res, next) => {
     }
     res.json({
       message: "success",
-      data: row
+      data: row,
     });
   });
 });
@@ -56,14 +56,14 @@ router.get("/cat/:id", (req, res, next) => {
     }
     res.json({
       message: "success",
-      data: row
+      data: row,
     });
   });
 });
 /*-----------------------------Create Product-------------------------------*/
 
-router.post("/upload", function(req, res) {
-  upload(req, res, function(err) {
+router.post("/upload", function (req, res) {
+  upload(req, res, function (err) {
     console.log(err);
     if (err instanceof multer.MulterError) {
       return res.status(500).json(err);
@@ -111,7 +111,7 @@ router.post("/images", upload.array("files"), (req, res, next) => {
     title: req.body.title,
     images: req.body.images,
     users_id: 1,
-    sub_categories_id: req.body.sub_categories_id
+    sub_categories_id: req.body.sub_categories_id,
   };
 
   const sql =
@@ -122,9 +122,9 @@ router.post("/images", upload.array("files"), (req, res, next) => {
     data.title,
     data.users_id,
     data.sub_categories_id,
-    data.images
+    data.images,
   ];
-  db.run(sql, params, function(err, result) {
+  db.run(sql, params, function (err, result) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
@@ -140,7 +140,7 @@ router.post("/images", upload.array("files"), (req, res, next) => {
     res.json({
       message: "success",
       data: data,
-      id: this.lastID
+      id: this.lastID,
     });
   });
 });
@@ -154,7 +154,7 @@ router.patch("/:id", (req, res, next) => {
     description: req.body.description,
     users_id: req.body.users_id,
     users_id: req.body.images,
-    sub_categories_id: req.body.sub_categories_id
+    sub_categories_id: req.body.sub_categories_id,
   };
   db.run(
     `UPDATE products set 
@@ -172,9 +172,9 @@ router.patch("/:id", (req, res, next) => {
       data.users_id,
       data.sub_categories_id,
       data.sub_images,
-      req.params.id
+      req.params.id,
     ],
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
@@ -182,7 +182,7 @@ router.patch("/:id", (req, res, next) => {
       res.json({
         message: "success",
         data: data,
-        changes: this.changes
+        changes: this.changes,
       });
     }
   );
@@ -191,16 +191,17 @@ router.patch("/:id", (req, res, next) => {
 /*-----------------------------Delete Product-------------------------------*/
 
 router.delete("/:id", (req, res, next) => {
-  db.run("DELETE FROM products WHERE product_id = ?", req.params.id, function(
-    err,
-    result
-  ) {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
+  db.run(
+    "DELETE FROM products WHERE product_id = ?",
+    req.params.id,
+    function (err, result) {
+      if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+      }
+      res.json({ message: "deleted", changes: this.changes });
     }
-    res.json({ message: "deleted", changes: this.changes });
-  });
+  );
 });
 
 export default router;

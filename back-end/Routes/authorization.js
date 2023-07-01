@@ -1,4 +1,4 @@
-import db from "../db";
+import db from "../db.js";
 import express from "express";
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.post("/login", (req, res, next) => {
 
     res.json({
       message: "success",
-      data: rows
+      data: rows,
     });
   });
 });
@@ -33,7 +33,7 @@ router.post("/signup", (req, res, next) => {
 
     res.json({
       message: "success",
-      data: rows
+      data: rows,
     });
   });
 });

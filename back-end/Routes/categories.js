@@ -1,4 +1,4 @@
-import db from "../db";
+import db from "../db.js";
 import express from "express";
 const router = express.Router();
 /*---------------------------Get Categories----------------------------*/
@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
 
     res.json({
       message: "success",
-      data: rows
+      data: rows,
     });
   });
 });
@@ -29,7 +29,7 @@ router.get("/:id", (req, res, next) => {
     }
     res.json({
       message: "success",
-      data: row
+      data: row,
     });
   });
 });
@@ -46,12 +46,12 @@ router.post("/", (req, res, next) => {
     return;
   }
   const data = {
-    type_name: req.body.type_name
+    type_name: req.body.type_name,
   };
 
   const sql = "INSERT INTO categories (type_name) VALUES (?)";
   const params = [data.type_name];
-  db.run(sql, params, function(err, result) {
+  db.run(sql, params, function (err, result) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
@@ -59,7 +59,7 @@ router.post("/", (req, res, next) => {
     res.json({
       message: "success",
       data: data,
-      id: this.lastID
+      id: this.lastID,
     });
   });
 });
@@ -68,7 +68,7 @@ router.post("/", (req, res, next) => {
 
 router.patch("/:id", (req, res, next) => {
   const data = {
-    type_name: req.body.type_name
+    type_name: req.body.type_name,
   };
   db.run(
     `UPDATE categories set 
@@ -76,7 +76,7 @@ router.patch("/:id", (req, res, next) => {
            WHERE categories_id = ?`,
     [data.type_name, req.params.id],
 
-    function(err, result) {
+    function (err, result) {
       console.log(data.type_name);
       if (err) {
         res.status(400).json({ error: err.message });
@@ -85,7 +85,7 @@ router.patch("/:id", (req, res, next) => {
       res.json({
         message: "success",
         data: data,
-        changes: this.changes
+        changes: this.changes,
       });
     }
   );
@@ -97,7 +97,7 @@ router.delete("/:id", (req, res, next) => {
   db.run(
     "DELETE FROM categories WHERE categories_id = ?",
     req.params.id,
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(400).json({ error: err.message });
         return;

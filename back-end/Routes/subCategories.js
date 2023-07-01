@@ -1,4 +1,4 @@
-import db from "../db";
+import db from "../db.js";
 import express from "express";
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 
     res.json({
       message: "success",
-      data: rows
+      data: rows,
     });
   });
 });
@@ -30,7 +30,7 @@ router.get("/:id", (req, res, next) => {
     }
     res.json({
       message: "success",
-      data: row
+      data: row,
     });
   });
 });
@@ -52,12 +52,12 @@ router.post("/", (req, res, next) => {
   }
   const data = {
     name: req.body.name,
-    categories_id: req.body.categories_id
+    categories_id: req.body.categories_id,
   };
 
   const sql = "INSERT INTO sub_categories (name , categories_id) VALUES (?,?)";
   const params = [data.name, data.categories_id];
-  db.run(sql, params, function(err, result) {
+  db.run(sql, params, function (err, result) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
@@ -65,7 +65,7 @@ router.post("/", (req, res, next) => {
     res.json({
       message: "success",
       data: data,
-      id: this.lastID
+      id: this.lastID,
     });
   });
 });
@@ -75,7 +75,7 @@ router.post("/", (req, res, next) => {
 router.patch("/:id", (req, res, next) => {
   const data = {
     name: req.body.name,
-    categories_id: req.body.categories_id
+    categories_id: req.body.categories_id,
   };
   db.run(
     `UPDATE sub_categories set 
@@ -83,7 +83,7 @@ router.patch("/:id", (req, res, next) => {
         categories_id = COALESCE(?,categories_id)        
            WHERE sub_categories_id = ?`,
     [data.name, data.categories_id, req.params.id],
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
@@ -91,7 +91,7 @@ router.patch("/:id", (req, res, next) => {
       res.json({
         message: "success",
         data: data,
-        changes: this.changes
+        changes: this.changes,
       });
     }
   );
@@ -103,7 +103,7 @@ router.delete("/:id", (req, res, next) => {
   db.run(
     "DELETE FROM sub_categories WHERE sub_categories_id = ?",
     req.params.id,
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
