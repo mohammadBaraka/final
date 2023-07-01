@@ -1,82 +1,61 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "reactstrap";
 import "./AllProuducts.css";
-
-class AllProducts extends Component {
-  state = {
-    productsAll: []
-  };
-
-  async componentDidMount() {
-    try {
-      const response = await fetch("http://localhost:8000/products");
-      const result = await response.json();
-      if (result) {
-        const productsAll = result.data;
-        this.setState({ productsAll });
-        console.log(this.state.productsAll);
-      } else console.log(result.message);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  deleteProduct = item => {
-    const productsAll = this.state.productsAll;
-    const product = productsAll.findIndex(product => product === item);
-    productsAll.splice(product, 1);
-    this.setState({ productsAll });
-  };
-
-  render() {
-    const { productsAll } = this.state;
-    const product = productsAll.length;
-    const productMap = product ? (
-      this.state.productsAll.map(item => {
+import axios from "axios";
+function AllProuducts() {
+  const URL = `http://localhost:8000/products`;
+  const [products, setProducts] = useState([]);
+  console.log(products);
+  useEffect(() => {
+    const getAllProducts = async () => {
+      try {
+        const res = await axios.get(URL);
+        setProducts(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllProducts();
+  }, []);
+  return (
+    <div className="AllProducts">
+      {products.map((prod) => {
+        console.log(prod.images);
         return (
-          <div key={item.product_id}>
+          <div>
             <div className="card_all">
               <button
                 className="btn-delete"
-                onClick={() => this.deleteProduct(item)}
+                onClick={() => this.deleteProduct()}
               >
                 Delete
               </button>
               <div className="header-product">
-                <p className="card-title">{item.title}</p>
+                <p className="card-title">{prod.title}</p>
               </div>
-              {/* Card image */}
+
               <img
                 className="card-img-top"
-                src={`http://localhost:8000/${item.images}`}
+                src={`../../public/${prod.images}`}
                 alt="Card image cap"
                 draggable="false"
                 width="100%"
                 height="50%"
               />
               <div className="details">
-                {/* Text */}
-                <p className="card-text">
-                  {item.description}
-                  <span>Price:{item.price}$</span>
-                </p>
+                <p className="card-text"></p>
               </div>
 
-              {/* Button */}
               <NavLink to="details" className="btn btn-dark btn_all">
-                {" "}
                 Show Details
               </NavLink>
             </div>
           </div>
         );
-      })
-    ) : (
-      <div className="no_products">
-        <p>There Is No Product To Show !</p>
-      </div>
-    );
-    return <div className="AllProducts ">{productMap}</div>;
-  }
+      })}
+    </div>
+  );
 }
 
-export default AllProducts;
+export default AllProuducts;
+// export default AllProducts;

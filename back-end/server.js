@@ -30,5 +30,5 @@ app.use("/sub_categories", sub_categories);
 app.use("/products", products);
 const HTTP_PORT = process.env.PORT || 8000;
 app.listen(HTTP_PORT, () => {
-  console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
+  console.log(`Server Running On Port http://localhost:${HTTP_PORT}`);
 });
