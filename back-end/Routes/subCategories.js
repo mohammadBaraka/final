@@ -4,7 +4,7 @@ const router = express.Router();
 
 /*---------------------------Get Sub Categories-----------------------------*/
 
-router.get("/", (req, res, next) => {
+router.get("/cat", (req, res, next) => {
   const sql = "select * from sub_categories";
   const params = [];
   db.all(sql, params, (err, rows) => {

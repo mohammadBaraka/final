@@ -2,11 +2,10 @@ import db from "../db.js";
 import express from "express";
 const router = express.Router();
 
-/*---------------------------Get Users----------------------------*/
+// ? *---------------------------GET ALL USERS----------------------------*/
 
-router.get("/", (req, res, next) => {
-  const sql =
-    "select * from users join products where products.product_id = users_id";
+router.get("/users", (req, res, next) => {
+  const sql = /*sql*/ `select * from users `;
   const params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -15,23 +14,66 @@ router.get("/", (req, res, next) => {
     }
 
     res.json({
-      message: "success",
       data: rows,
     });
   });
 });
+// ? *---------------------------GET USER WIHT OUT HIS PRODUCT----------------------------*/
 
-router.get("/:id", (req, res, next) => {
-  const sql = "select * from users where id = ?";
+router.get("/user/:id", (req, res) => {
+  const sql = /*sql*/ `SELECT * FROM users where id = ?`;
+  const id = [req.params.id];
+  try {
+    db.get(sql, id, (err, row) => {
+      if (err) return res.status(409).json(err.message);
+      if (!row) return res.status(404).json("User Not Found!");
+      res.status(200).json({
+        message: "OK",
+        data: row,
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// ? *---------------------------GET USER WIHT HIS PRODUCT----------------------------*/
+
+router.get("/users/:id", (req, res, next) => {
+  const sql = /*sql*/ `
+  SELECT users.*, products.*
+  FROM users
+  JOIN products ON products.users_id = users.id
+  WHERE users.id = ?`;
+
   const params = [req.params.id];
-  db.get(sql, params, (err, row) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
+  db.all(sql, params, (err, rows) => {
+    if (err) return res.status(400).json({ error: err.message });
+    if (rows.length === 0)
+      return res.status(404).json("There Is No User With Products");
+
+    const user = {
+      id: rows[0].id,
+      first_name: rows[0].first_name,
+      email: rows[0].email,
+      phone_number: rows[0].phone_number,
+      address: rows[0].address,
+      password: rows[0].password,
+      passwordConfirm: rows[0].passwordConfirm,
+      products: rows.map((row) => ({
+        product_id: row.product_id,
+        price: row.price,
+        description: row.description,
+        title: row.title,
+        users_id: row.users_id,
+        sub_categories_id: row.sub_categories_id,
+        images: row.images,
+      })),
+    };
+
     res.json({
       message: "success",
-      data: row,
+      data: user,
     });
   });
 });

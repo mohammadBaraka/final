@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import "./Sign Up.css";
 import { useState } from "react";
 import axios from "axios";
 import { handeMessage } from "../SweetAlert/SweetAlert";
 function SingnUp() {
-  const URL = `http://localhost:8000/auth/register`;
+  const navigate = useNavigate();
+  const URL = `http://localhost:8000/api/register`;
   const [showPass, setShowPass] = useState("password");
   const [showPassConfirm, setShowPassConfirm] = useState("password");
   const [first_name, setFirstName] = useState("");
@@ -28,7 +29,7 @@ function SingnUp() {
       console.log(res.data);
       handeMessage("success", res.data.message);
       setTimeout(() => {
-        // history.path("/login");
+        navigate("/login");
       }, 2500);
     } catch (error) {
       console.log(error.response.data);
@@ -158,7 +159,7 @@ function SingnUp() {
                 <button className="btn btn-success" onClick={handleSubmit}>
                   Sign Up
                 </button>
-                <NavLink to="login">
+                <NavLink to="/login">
                   <button className="btn btn-danger sign_up">Log In</button>
                 </NavLink>
               </form>

@@ -2,13 +2,31 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-
+import axios from "axios";
+import { handeMessage } from "../SweetAlert/SweetAlert";
 function Login() {
+  const URL = `http://localhost:8000/api/login`;
   const [showPass, setSowPass] = useState("password");
-  const [email, setEmail] = useState("");
-  console.log(email);
-  const [pass, setPass] = useState("");
-  console.log(pass);
+  const [first_name, setFirstName] = useState("");
+  const [password, setPassord] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(URL, {
+        first_name,
+        password,
+      });
+      console.log(res.data);
+      handeMessage("success", res.data.message);
+      // setTimeout(() => {
+      //   navigate("/login");
+      // }, 2500);
+    } catch (error) {
+      console.log(error.response.data);
+
+      handeMessage("error", error.response.data);
+    }
+  };
   return (
     <div className="container-home">
       <div className="card_form card_opacity">
@@ -23,7 +41,7 @@ function Login() {
                 </div>
                 <div className="purple-text form_input">
                   <MDBInput
-                    label="Type your email"
+                    label="Type your Name"
                     icon="envelope"
                     group
                     type="email"
@@ -31,8 +49,8 @@ function Login() {
                     error="wrong"
                     success="right"
                     name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={first_name}
+                    onChange={(e) => setFirstName(e.target.value)}
                   />
                   <div className="pass">
                     <MDBInput
@@ -42,9 +60,9 @@ function Login() {
                       group
                       type={showPass}
                       validate
-                      value={pass}
+                      value={password}
                       name="password"
-                      onChange={(e) => setPass(e.target.value)}
+                      onChange={(e) => setPassord(e.target.value)}
                     />
                     <h4 className=" text-purple eye_position">
                       <i
@@ -59,11 +77,11 @@ function Login() {
                   </div>
                 </div>
 
-                <button className="btn btn-success">Login</button>
+                <button onClick={handleSubmit} className="btn btn-success">
+                  Login
+                </button>
                 <NavLink to="/signup">
-                  <button className="btn btn-danger sign_up sign_up">
-                    Sign Up
-                  </button>
+                  <button className="btn btn-danger sign_up ">Sign Up</button>
                 </NavLink>
               </form>
             </MDBCol>

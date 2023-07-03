@@ -105,7 +105,10 @@ router.post("/login", (req, res, next) => {
           httpOnly: true,
         })
         .status(200)
-        .json(userWithoutPassword);
+        .json({
+          message: "Loged in Successfully!",
+          data: userWithoutPassword,
+        });
     });
   } catch (error) {
     console.log(error);

@@ -24,7 +24,6 @@ router.get("/", (req, res, next) => {
       res.status(400).json({ error: err.message });
       return;
     }
-
     res.json({
       message: "success",
       data: rows,
@@ -46,14 +45,13 @@ router.get("/:id", (req, res, next) => {
     });
   });
 });
+
 router.get("/cat/:id", (req, res, next) => {
   const sql = "select * from products where sub_categories_id = ?";
   const params = [req.params.id];
   db.all(sql, params, (err, row) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
+    if (err) return res.status(400).json({ error: err.message });
+    if (row > 3) return res.status(404).json("Categories Not Found!");
     res.json({
       message: "success",
       data: row,
@@ -115,7 +113,7 @@ router.post("/images", upload.array("files"), (req, res, next) => {
   };
 
   const sql =
-    "INSERT INTO products (price, description, title, users_id, sub_categories_id , images) VALUES (?,?,?,?,? , ?)";
+    "INSERT INTO products (price, description, title, users_id, sub_categories_id , images) VALUES (?,?,?,?,?,?)";
   const params = [
     data.price,
     data.description,
@@ -129,14 +127,6 @@ router.post("/images", upload.array("files"), (req, res, next) => {
       res.status(400).json({ error: err.message });
       return;
     }
-    // const sql_product_images =
-    //   "INSERT INTO images (name, products_product_id) VALUES (?, ?)";
-    // for (let index = 0; index < req.files.length; index++) {
-    //   const file = req.files[index];
-    // }
-    // this.req.files.map(async file => {
-    //   await db.run(sql_product_images, [file.filename, result.lastID]);
-    // });
     res.json({
       message: "success",
       data: data,

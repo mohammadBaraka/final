@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "reactstrap";
 import "./AllProuducts.css";
 import axios from "axios";
+import Image from "./2.jpg";
 function AllProuducts() {
   const URL = `http://localhost:8000/products`;
   const [products, setProducts] = useState([]);
@@ -11,16 +12,13 @@ function AllProuducts() {
       try {
         const res = await axios.get(URL);
         setProducts(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
     getAllProducts();
   }, []);
   return (
     <div className="AllProducts">
       {products.map((prod) => {
-        console.log(prod.images);
         return (
           <div key={prod.product_id}>
             <div className="card_all">
@@ -36,7 +34,7 @@ function AllProuducts() {
 
               <img
                 className="card-img-top"
-                src={`../../public/${prod.images}`}
+                src={Image}
                 alt="Card image cap"
                 draggable="false"
                 width="100%"
