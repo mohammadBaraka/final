@@ -1,59 +1,54 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import { useContext } from "react";
+import { ContextApi } from "../../Context/AuthContext";
 
-class NavBar extends Component {
-  /* state = {
-    date: new Date()
-  };
-  componentDidMount() {
-    setInterval(() => this.setState({ date: new Date() }), 1000);
-  }
-  */
-  render() {
-    return (
+function NavBar() {
+  const { currentUser } = useContext(ContextApi);
+  console.log(currentUser);
+  return (
+    <div>
       <div className="NavBar">
         <div className="header p-3 mb-2 bg-dark text-">
-          <NavLink to="/add">
+          <Link to="/add">
             <button className="btn btn-success ">
               Add Product
               <i className="fa fa-plus-circle"></i>
             </button>
-          </NavLink>
-          <NavLink
-            to="/login"
-            className="btn btn-light sign"
-            placeholder="Search"
-          >
-            <i className="fas fa-sign-in-alt fa-larg"></i>
-            Log In
-          </NavLink>
-          {/*   <div className="oclock">
-            <Clock value={this.state.date} />
-          </div>
-    */}
+          </Link>
+          {currentUser !== null ? (
+            <Link to="/login" className="btn btn-danger sign">
+              <i className="fas fa-sign-in-alt fa-larg"></i>
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login" className="btn btn-light sign">
+              <i className="fas fa-sign-in-alt fa-larg"></i>
+              Login
+            </Link>
+          )}
         </div>
         <div className="NavigationBar">
-          <NavLink exact to="/phone" className="btn btn-info active ">
+          <Link exact to="/phone" className="btn btn-info active ">
             Phones
             <i className="fa fa-mobile-alt"></i>
-          </NavLink>
-          <NavLink to="/" className="btn btn-dark">
+          </Link>
+          <Link to="/" className="btn btn-dark">
             New Products
             <i className="fa fa-spinner fa-spin"></i>
-          </NavLink>
-          <NavLink to="/laptops" className="btn btn-info">
+          </Link>
+          <Link to="/laptops" className="btn btn-info">
             Laptops
             <i className="fa fa-laptop"></i>
-          </NavLink>
-          <NavLink to="/screen" className="btn btn-info">
+          </Link>
+          <Link to="/screen" className="btn btn-info">
             Screens
             <i className="fa fa-desktop"></i>
-          </NavLink>
+          </Link>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default NavBar;

@@ -108,6 +108,7 @@ router.post("/login", (req, res, next) => {
         .json({
           message: "Loged in Successfully!",
           data: userWithoutPassword,
+          token,
         });
     });
   } catch (error) {

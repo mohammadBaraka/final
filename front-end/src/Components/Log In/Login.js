@@ -1,32 +1,37 @@
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
-import "./Login.css";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { handeMessage } from "../SweetAlert/SweetAlert";
+import axios from "axios";
+import "./Login.css";
+import { ContextApi } from "../../Context/AuthContext";
+
 function Login() {
-  const URL = `http://localhost:8000/api/login`;
+  const { login } = useContext(ContextApi);
+  const navigate = useNavigate();
   const [showPass, setSowPass] = useState("password");
-  const [first_name, setFirstName] = useState("");
-  const [password, setPassord] = useState("");
+  const [inputs, setInputs] = useState({
+    first_name: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(URL, {
-        first_name,
-        password,
-      });
-      console.log(res.data);
-      handeMessage("success", res.data.message);
-      // setTimeout(() => {
-      //   navigate("/login");
-      // }, 2500);
+      await login(inputs);
+      // console.log(res.data.token);
+      // handeMessage("success", msg);
+      setTimeout(() => {
+        navigate("/");
+      }, 2500);
     } catch (error) {
-      console.log(error.response.data);
-
+      console.log(error);
       handeMessage("error", error.response.data);
     }
   };
+
   return (
     <div className="container-home">
       <div className="card_form card_opacity">
@@ -48,9 +53,8 @@ function Login() {
                     validate
                     error="wrong"
                     success="right"
-                    name="email"
-                    value={first_name}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    name="first_name"
+                    onChange={handleChange}
                   />
                   <div className="pass">
                     <MDBInput
@@ -60,9 +64,8 @@ function Login() {
                       group
                       type={showPass}
                       validate
-                      value={password}
                       name="password"
-                      onChange={(e) => setPassord(e.target.value)}
+                      onChange={handleChange}
                     />
                     <h4 className=" text-purple eye_position">
                       <i

@@ -4,13 +4,13 @@ import "./AllProuducts.css";
 import axios from "axios";
 import Image from "./2.jpg";
 function AllProuducts() {
-  const URL = `http://localhost:8000/products`;
+  // const URL = `http://localhost:8000/products`;
   const [products, setProducts] = useState([]);
   console.log(products);
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const res = await axios.get(URL);
+        const res = await axios.get(`http://localhost:8000/products`);
         setProducts(res.data.data);
       } catch (error) {}
     };

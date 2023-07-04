@@ -9,23 +9,22 @@ function SingnUp() {
   const URL = `http://localhost:8000/api/register`;
   const [showPass, setShowPass] = useState("password");
   const [showPassConfirm, setShowPassConfirm] = useState("password");
-  const [first_name, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [address, setAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [inputs, setInputs] = useState({
+    first_name: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+    phone_number: "",
+    address: "",
+  });
+  console.log(inputs);
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(URL, {
-        first_name,
-        email,
-        password,
-        passwordConfirm,
-        phone_number,
-        address,
-      });
+      const res = await axios.post(URL, inputs);
       console.log(res.data);
       handeMessage("success", res.data.message);
       setTimeout(() => {
@@ -59,9 +58,8 @@ function SingnUp() {
                     validate
                     error="wrong"
                     success="right"
-                    name="name"
-                    value={first_name}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    name="first_name"
+                    onChange={handleChange}
                   />
                   <MDBInput
                     size="lg"
@@ -73,8 +71,7 @@ function SingnUp() {
                     error="wrong"
                     success="right"
                     name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                   />
 
                   <div className="pass_signup">
@@ -87,8 +84,7 @@ function SingnUp() {
                       type={showPass}
                       validate
                       name="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handleChange}
                     />
                     <h4 className="signup_eye">
                       <i
@@ -112,9 +108,8 @@ function SingnUp() {
                       validate
                       error="wrong"
                       success="right"
-                      name="password"
-                      value={passwordConfirm}
-                      onChange={(e) => setPasswordConfirm(e.target.value)}
+                      name="passwordConfirm"
+                      onChange={handleChange}
                     />
                     <h4 className="signup_eye1">
                       <i
@@ -133,29 +128,17 @@ function SingnUp() {
                     label="Phone Number"
                     type="number"
                     icon="fa fa-phone-square"
-                    name="number"
-                    value={phone_number}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    name="phone_number"
+                    onChange={handleChange}
                   />
                   <MDBInput
                     size="lg"
                     label="Address"
                     icon="fa fa-map-marker"
                     name="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={handleChange}
                   />
                 </div>
-                {/* <p
-                  style={{
-                    textAlign: "center",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    color: "red",
-                  }}
-                >
-                  {err}
-                </p> */}
                 <button className="btn btn-success" onClick={handleSubmit}>
                   Sign Up
                 </button>
@@ -167,7 +150,6 @@ function SingnUp() {
           </MDBRow>
         </MDBContainer>
       </div>
-      {/*/Form with header*/}
     </div>
   );
 }
