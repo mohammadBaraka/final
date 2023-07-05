@@ -6,7 +6,6 @@ import Image from "./2.jpg";
 function AllProuducts() {
   // const URL = `http://localhost:8000/products`;
   const [products, setProducts] = useState([]);
-  console.log(products);
   useEffect(() => {
     const getAllProducts = async () => {
       try {

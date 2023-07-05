@@ -9,20 +9,13 @@ import products from "./Routes/products.js";
 import express from "express";
 import cookieParser from "cookie-parser";
 const app = express();
-const corsOptions = {
-  origin: "http://localhost:3000", // Replace with your actual front-end domain
-  credentials: true, // Enable sending cookies across origins
-};
-app.use(cors(corsOptions));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(express.static(path.join(__dirname, "./public"))); // <-- location of public dir
-app.get("/", (req, res, next) => {
-  res.json({ message: "Ok" });
-});
 
+//?================================ROUTING============================================
 app.use("/api", user);
 app.use("/api", categories);
 app.use("/api", sub_categories);
@@ -34,8 +27,7 @@ app.use((err, req, res, next) => {
   const message = err.message;
   res.status(500).json({ success: false, message });
 });
-
-/*--------------------------------------Router------------------------------------------*/
+//?================================SERVER===============================================
 
 const HTTP_PORT = process.env.PORT || 8000;
 app.listen(HTTP_PORT, () => {

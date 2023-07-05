@@ -2,7 +2,6 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { handeMessage } from "../SweetAlert/SweetAlert";
-import axios from "axios";
 import "./Login.css";
 import { ContextApi } from "../../Context/AuthContext";
 

@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { useContext } from "react";
 import { ContextApi } from "../../Context/AuthContext";
 
 function NavBar() {
-  const { currentUser } = useContext(ContextApi);
-  console.log(currentUser);
+  const { currentUser, logout } = useContext(ContextApi);
+
   return (
     <div>
       <div className="NavBar">
@@ -17,7 +17,7 @@ function NavBar() {
             </button>
           </Link>
           {currentUser !== null ? (
-            <Link to="/login" className="btn btn-danger sign">
+            <Link onClick={logout} className="btn btn-danger sign">
               <i className="fas fa-sign-in-alt fa-larg"></i>
               Logout
             </Link>

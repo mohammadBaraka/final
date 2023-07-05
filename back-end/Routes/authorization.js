@@ -101,7 +101,7 @@ router.post("/login", (req, res, next) => {
       //? =====================SEND TOKEN AND USER DETAILS IN RESPONSE=====================
 
       res
-        .cookie("access_token", token, {
+        .cookie("check_token", token, {
           httpOnly: true,
         })
         .status(200)
@@ -118,20 +118,14 @@ router.post("/login", (req, res, next) => {
 });
 
 /*--------------------------- Signup ----------------------------*/
-router.post("/logout", (req, res, next) => {
-  const sql = "select * from categories";
-  const params = [];
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-
-    res.json({
-      message: "success",
-      data: rows,
-    });
-  });
+router.post("/logout", async (req, res) => {
+  res
+    .clearCookie("check_token", {
+      sameSite: "none",
+      secure: true,
+    })
+    .status(200)
+    .json("User Has Been Loged");
 });
 
 export default router;
