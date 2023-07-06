@@ -25,7 +25,7 @@ class App extends Component {
             <Route path="/laptops" element={<LaptopProducts />} />
             <Route path="/screen" element={<ScreenProducts />} />
             <Route path="/add" element={<AddProduct />} />
-            <Route path="/details" element={<Details />} />
+            <Route path="/details/:product_id" element={<Details />} />
           </Routes>
           <Footer />
         </div>

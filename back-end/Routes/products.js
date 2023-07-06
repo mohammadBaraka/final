@@ -32,7 +32,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-  const sql = "select * from products where product_id = ?";
+  const sql = /*sql*/ `SELECT * FROM products JOIN users on users.id = products.users_id WHERE product_id = ?`;
   const params = [req.params.id];
   db.get(sql, params, (err, row) => {
     if (err) {

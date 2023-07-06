@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "reactstrap";
+import { Link } from "react-router-dom";
+import { UrlProducts } from "../URLS/URLS";
 import "./AllProuducts.css";
 import axios from "axios";
 import Image from "./2.jpg";
 function AllProuducts() {
-  // const URL = `http://localhost:8000/products`;
+  // const URL =;
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/products`);
+        const res = await axios.get(UrlProducts);
         setProducts(res.data.data);
       } catch (error) {}
     };
@@ -43,9 +44,12 @@ function AllProuducts() {
                 <p className="card-text"></p>
               </div>
 
-              <NavLink to="details" className="btn btn-dark btn_all">
+              <Link
+                to={`/details/${prod.product_id}`}
+                className="btn btn-dark btn_all"
+              >
                 Show Details
-              </NavLink>
+              </Link>
             </div>
           </div>
         );

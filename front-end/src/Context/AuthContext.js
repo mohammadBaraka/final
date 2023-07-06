@@ -14,10 +14,10 @@ export const AuthContext = ({ children }) => {
     const res = await axios.post(`${URL}/login`, inputs, {
       withCredentials: true,
     });
-    console.log(res);
     setCurrentUser(res.data.data);
     handeMessage("success", res.data.message);
   };
+
   const logout = async () => {
     try {
       const res = await axios.post(`${URL}/logout`, null, {
