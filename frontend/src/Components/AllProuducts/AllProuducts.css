@@ -21,9 +21,7 @@
   box-shadow: 4px 4px 20px #999;
 }
 
-.card_all:hover .btn-delete {
-  visibility: visible;
-}
+
 
 .header-product {
   text-align: center;
@@ -41,16 +39,28 @@
   font-size: 22px;
 }
 
-.btn-delete {
+.card_all .button {
   visibility: hidden;
-  outline: 0;
-  border: none;
-  background: #d63031;
-  color: #fff;
-  box-shadow: 0.5px 0.5px 5px black;
-  border-radius: 2px;
+  border-radius: 50px;
+  margin: 15px 5px;
+  width: 120px;
 }
+.button-contetn {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+}
+.card_all:hover .button {
+  visibility: visible;
+}
+.card_all .image-content {
+width: 90%;
+height: 80%;
+margin: auto;
+display: flex;
+justify-content: center;
 
+}
 .details {
   width: 95%;
   margin: 4% auto 0 auto;
@@ -76,6 +86,7 @@
   width: 70%;
   text-align: center;
 }
+
 
 .btn_all {
   position: absolute;

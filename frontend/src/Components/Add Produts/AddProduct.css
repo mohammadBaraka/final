@@ -5,7 +5,7 @@
   background: #fff;
   padding: 70px;
   border-radius: 50px;
-  box-shadow: 3px 3px 40px black;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
   position: relative;
 }
 
