@@ -9,7 +9,6 @@ import { UrlProducts, UploadImage } from "../URLS/URLS";
 import { handeMessage } from "../SweetAlert/SweetAlert";
 function AddProdut() {
   const state = useLocation().state;
-  // console.log(state?.product_id);
   const [title, setTitle] = useState(state?.title || "");
   const [desc, setDesc] = useState(state?.description || "");
   const [price, setPrice] = useState(state?.price || "");
@@ -43,16 +42,21 @@ function AddProdut() {
       images: imageUlrl ? imageUlrl : "",
     };
     try {
-      const res = state
+      const res = (await state)
         ? await axios.put(`${UrlProducts}/${state.product_id}`, params, {
             withCredentials: true,
           })
         : await axios.post(`${UrlProducts}`, params, {
             withCredentials: true,
           });
-      handeMessage("success", res.data.data);
+      {
+        state
+          ? handeMessage("success", "Edit Product Successfully!")
+          : handeMessage("success", "Add Product Successfully!");
+      }
+      console.log(res.data);
     } catch (error) {
-      handeMessage(error.response.data);
+      handeMessage("error", error.response.data);
     }
   };
 
