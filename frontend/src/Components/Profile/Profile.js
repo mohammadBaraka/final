@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { UrlProducts } from "../URLS/URLS";
-import "./AllProuducts.css";
-import axios from "axios";
-import { ContextApi } from "../../Context/AuthContext";
+import { UrlUSer, UrlProducts } from "../URLS/URLS";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { handeMessage } from "../SweetAlert/SweetAlert";
 import Swal from "sweetalert2";
-function AllProuducts() {
+import axios from "axios";
+import "./Profile.css";
+import { ContextApi } from "../../Context/AuthContext";
+function Profile() {
   const [products, setProducts] = useState([]);
   const { currentUser } = useContext(ContextApi);
-  const cat = useLocation().search;
   const navigate = useNavigate();
+  const userID = useParams().id;
   const deleteProduct = async (id) => {
     try {
       Swal.fire({
@@ -38,14 +38,14 @@ function AllProuducts() {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const res = await axios.get(`${UrlProducts}${cat}`);
-        setProducts(res.data.data);
+        const res = await axios.get(`${UrlUSer}/${userID}`);
+        setProducts(res.data.data.products);
       } catch (error) {
         console.log(error.message);
       }
     };
     getAllProducts();
-  }, [cat]);
+  }, [userID]);
   return (
     <div className="AllProducts">
       {products.map((prod) => {
@@ -105,5 +105,4 @@ function AllProuducts() {
   );
 }
 
-export default AllProuducts;
-// export default AllProducts;
+export default Profile;

@@ -13,7 +13,7 @@ function AddProdut() {
   const [desc, setDesc] = useState(state?.description || "");
   const [price, setPrice] = useState(state?.price || "");
   const [catName, setCatName] = useState(state?.cat_name || "");
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(state?.images || "");
 
   const upladImg = async () => {
     try {
@@ -115,10 +115,15 @@ function AddProdut() {
                 value={catName}
                 onChange={(e) => setCatName(e.target.value)}
               >
+                <option disabled style={{ color: "#fff" }} value="">
+                  {" "}
+                  --Please Select Categorie--{" "}
+                </option>
                 <option>laptop</option>
                 <option>screen</option>
                 <option>phone</option>
               </select>
+
               <input
                 style={{ display: "none" }}
                 size="lg"

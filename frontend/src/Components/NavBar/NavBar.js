@@ -18,13 +18,25 @@ function NavBar() {
       <div className="NavBar">
         <div className="header p-3 mb-2 bg-dark text-">
           <Link to="/add">
-            <button className="btn btn-success ">
+            <button className="btn btn-success" style={{ width: "350px" }}>
               Add Product
               <i className="fa fa-plus-circle"></i>
             </button>
           </Link>
+          {currentUser ? (
+            <Link
+              to={`/profile/${currentUser?.id}`}
+              className="profile btn btn-outline-light"
+            >
+              {currentUser.first_name}
+            </Link>
+          ) : null}
           {currentUser !== null ? (
-            <Link onClick={handleLogout} className="btn btn-danger sign">
+            <Link
+              style={{ color: "#fff" }}
+              onClick={handleLogout}
+              className="btn btn-danger sign"
+            >
               <i className="fas fa-sign-in-alt fa-larg"></i>
               Logout
             </Link>

@@ -8,6 +8,7 @@ import SignUp from "./Components/Sign UP/Singn Up";
 import Details from "./Components/Details/Details";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Update from "./Components/Update/Update";
+import Profile from "./Components/Profile/Profile";
 
 class App extends Component {
   render() {
@@ -19,8 +20,8 @@ class App extends Component {
             <Route path="/" element={<AllProuducts />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-
             <Route path="/add" element={<AddProduct />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/edit/:id" element={<Update />} />
             <Route path="/details/:product_id" element={<Details />} />
           </Routes>
