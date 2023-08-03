@@ -16,29 +16,27 @@ function NavBar() {
   return (
     <div>
       <div className="NavBar">
-        <div className="header p-3 mb-2 bg-dark text-">
+        <div className="header p-3 mb-2 bg-dark text-center">
           <Link to="/add">
-            <button className="btn btn-success" style={{ width: "350px" }}>
+            <button className="btn btn-success">
               Add Product
               <i className="fa fa-plus-circle"></i>
             </button>
           </Link>
           {currentUser ? (
-            <Link
-              to={`/profile/${currentUser?.id}`}
-              className="profile btn btn-outline-light"
-            >
-              {currentUser.first_name}
+            <Link to={`/profile/${currentUser?.id}`}>
+              <button className="profile btn btn-dark">
+                {" "}
+                {currentUser.first_name}
+              </button>
             </Link>
           ) : null}
           {currentUser !== null ? (
-            <Link
-              style={{ color: "#fff" }}
-              onClick={handleLogout}
-              className="btn btn-danger sign"
-            >
-              <i className="fas fa-sign-in-alt fa-larg"></i>
-              Logout
+            <Link>
+              <button className="btn btn-danger sign" onClick={handleLogout}>
+                <i className="fas fa-sign-in-alt fa-larg"></i>
+                Logout
+              </button>
             </Link>
           ) : (
             <Link to="/login" className="btn btn-light sign">

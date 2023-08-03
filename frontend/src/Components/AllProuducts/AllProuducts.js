@@ -86,11 +86,6 @@ function AllProuducts() {
                   }}
                 />
               </div>
-
-              <div className="details">
-                <p className="card-text"></p>
-              </div>
-
               <Link
                 to={`/details/${prod.product_id}`}
                 className="btn btn-dark btn_all"

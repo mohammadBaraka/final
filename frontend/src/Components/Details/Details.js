@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { UrlProducts } from "../URLS/URLS";
 import "./Details.css";
 import { useParams } from "react-router-dom";
@@ -21,7 +21,7 @@ function Details() {
   }, []);
 
   return (
-    <div className="Details">
+    <div className="details">
       <div className="container_details">
         <div className="details_position">
           <h2>
